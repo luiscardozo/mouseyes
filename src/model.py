@@ -7,7 +7,7 @@ import logging as log
 import cv2
 
 from openvino.inference_engine import IECore
-from my_exceptions import *
+from mouseyes_exceptions import *
 
 class ModelBase:
     '''
