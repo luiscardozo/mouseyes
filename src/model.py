@@ -9,7 +9,7 @@ import cv2
 from openvino.inference_engine import IECore
 from my_exceptions import *
 
-class Model_Base:
+class ModelBase:
     '''
     Class for the Face Detection Model.
     '''
