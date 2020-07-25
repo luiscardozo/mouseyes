@@ -23,13 +23,15 @@ class ModelBase:
         self.device = device
         self.extensions = extensions
         self.transpose_form = transpose
-
-        self.core = IECore()
+        self.load_model()
 
     def load_model(self):
         '''
         Loads the model and the required plugins.
         '''
+
+        self.core = IECore()
+
         ### Add any necessary extensions ###
         if self.extensions and "CPU" in self.device:
             self.core.add_extension(self.extensions, self.device)
@@ -43,8 +45,6 @@ class ModelBase:
 
         # Get input and output names
         self.input_name=next(iter(network.inputs))    #only for models with 1 input. Review later (eg.: Resnet have >1)
-        self.input_shape = self.get_input_shape()
-
         self.output_name=next(iter(network.outputs))
         
         try:
@@ -97,10 +97,13 @@ class ModelBase:
 
         return model_xml, model_bin    
     
-    def preprocess_input(self, image, required_size=self.input_shape):
+    def preprocess_input(self, image, required_size=None):
         """
         Preprocess the frame according to the model needs.
         """
+        if required_size is None:
+            required_size = self.get_input_shape()
+        
         frame = cv2.resize(image, required_size)    #ToDo: mover a input_feeder?
         #cv2.cvtColor if not BGR
         frame = frame.transpose(self.transpose_form)    #depends on the model. Initialized with the class
@@ -119,8 +122,11 @@ class ModelBase:
         """Waits for an async request to be complete."""
         return self.exec_network.requests[request_id].wait(timeout_ms)
 
-    def get_output(self, request_id=0, output_name=self.output_name):
+    def get_output(self, request_id=0, output_name=None):
         """Return the output of a finished async request"""
+        if output_name is None:
+            output_name = self.output_name
+        
         return self.exec_network.requests[request_id].outputs[output_name]
 
     def get_input_shape(self):
