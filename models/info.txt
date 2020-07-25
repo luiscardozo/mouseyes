@@ -1,1 +1,8 @@
 Download your models here, using the Model Downloader or getting other models
+
+For example:
+
+(Run this outside of this virtual environment, as it have not all the required dependencies of the Model Downloader)
+
+/opt/intel/openvino/deployment_tools/open_model_zoo/tools/downloader/downloader.py --name face-detection-adas-binary-0001,head-pose-estimation-adas-0001,landmarks-regression-retail-0009,gaze-estimation-adas-0002 -o models/
+
