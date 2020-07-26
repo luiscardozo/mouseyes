@@ -8,4 +8,7 @@ class FacialLandmarksModel(ModelBase):
     #               |--> (x0, y0, x1, y1, ..., x5, y5)  (range[0,1])
     # 
     # From the eye positions, extract and return the images for left and right eyes
-    pass
+    
+    def __init__(self, model_path, device='CPU', extensions=None, transpose=(2,0,1)):
+        super().__init__(model_path, device=device, extensions=extensions, transpose=transpose)
+    

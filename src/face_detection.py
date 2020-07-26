@@ -6,5 +6,8 @@ class FaceDetectionModel(ModelBase):
     # Input: [1x3x384x672], [BxCxHxW], BGR.
     # Outputs: [1, 1, N, 7]
     #                    |--> [image_id, label, conf, x_min, y_min, x_max, y_max]
+
+    def __init__(self, model_path, device='CPU', extensions=None, transpose=(2,0,1)):
+        super().__init__(model_path, device=device, extensions=extensions, transpose=transpose)
+        print("Input shape:", super().get_input_shape)
     
-    pass
