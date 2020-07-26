@@ -8,3 +8,5 @@ virtualenv==16.7.9
 
 #Additional requirements:
 pyautogui
+pytest
+
