@@ -7,9 +7,11 @@ from mouseyes.gaze_estimation import GazeEstimationModel
 from mouseyes.mouseyes_exceptions import ModelXmlFileNotFoundException, ModelBinFileNotFoundException
 
 
-DEVICE="CPU" #I have only a 3rd gen i7.
-PRECISION="FP16"
+#DEVICE="MYRIAD"  #I have only a 3rd gen i7.
+DEVICE="CPU"
+PRECISION="FP32"
 VALID_MODEL=f'models/intel/landmarks-regression-retail-0009/{PRECISION}/landmarks-regression-retail-0009.xml'
+#Extension required for my CPU
 EXTENSION='/opt/intel/openvino/deployment_tools/inference_engine/lib/intel64/libcpu_extension_sse4.so'
 
 def test_load_existent_model_with_xml_ext():
