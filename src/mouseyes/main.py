@@ -3,6 +3,7 @@ import cv2
 import logging as log
 
 from mouseyes.face_detection import FaceDetectionModel
+from mouseyes.head_pose_estimation import HeadPoseEstimationModel
 from mouseyes.input_feeder import InputFeeder
 
 
@@ -13,7 +14,9 @@ from mouseyes.input_feeder import InputFeeder
 # 4. gaze direction => move mouse pointer
 
 DEVICE="CPU"
-FACE_MODEL=f'models/intel/face-detection-adas-binary-0001/INT1/face-detection-adas-binary-0001.xml'
+PRECISION="FP32"
+FACE_MODEL='models/intel/face-detection-adas-binary-0001/INT1/face-detection-adas-binary-0001.xml'
+HEAD_POSE_MODEL=f'models/intel/head-pose-estimation-adas-0001/{PRECISION}/head-pose-estimation-adas-0001.xml'
 EXTENSION='/opt/intel/openvino/deployment_tools/inference_engine/lib/intel64/libcpu_extension_sse4.so'
 DEFAULT_INPUT="cam"
 DEFAULT_CONFIDENCE=0.5
@@ -29,8 +32,10 @@ class MousEyes:
         :return: command line arguments
         """
         parser = ArgumentParser()
-        parser.add_argument("-m", "--face_model", required=False, type=str, default=FACE_MODEL,
+        parser.add_argument("-mf", "--face_model", required=False, type=str, default=FACE_MODEL,
                             help="Path to an xml file with a trained model for Face Detection.")
+        parser.add_argument("-mh", "--head_pose_model", required=False, type=str, default=HEAD_POSE_MODEL,
+                            help="Path to an xml file with a trained model for Head Pose Estimation.")
         parser.add_argument("-i", "--input", required=False, type=str, default=DEFAULT_INPUT,
                             help="Path to image or video file. 'cam' for WebCam")
         parser.add_argument("-l", "--cpu_extension", required=False, type=str,
@@ -77,8 +82,6 @@ class MousEyes:
         '''
         if coords is None:
             return frame
-
-        print(coords)
         
         for box in coords:
             xmin, ymin, xmax, ymax = box
@@ -94,15 +97,18 @@ class MousEyes:
         #initialize logging
         log.basicConfig(filename=args.logfile, level=args.loglevel)
 
-        #get the face
-        model = FaceDetectionModel(args.face_model, args.device, args.cpu_extension)
+        #initialize the models
+        face_model = FaceDetectionModel(args.face_model, args.device, args.cpu_extension)
+        head_pose_model = HeadPoseEstimationModel(args.head_pose_model, args.device, args.cpu_extension)
+        #open video and process the frames
         ifeed = InputFeeder(args.input)
         for frame in ifeed:
-            image = model.preprocess_input(frame)
-            out = model.predict(image)
+            #get the cropped face
+            image = face_model.preprocess_input(frame)
+            out = face_model.predict(image)
             w = frame.shape[1]
             h = frame.shape[0]
-            proc_out = model.preprocess_output(out, w, h)
+            proc_out = face_model.preprocess_output(out, w, h)
             
             if args.show_window:
                 painted_frame = self.draw_masks(frame, proc_out)
@@ -115,10 +121,21 @@ class MousEyes:
             if proc_out is None:
                 continue
 
-            cropped_img = model.get_cropped_face(image, proc_out)
+            cropped_img = face_model.get_cropped_face(frame, proc_out, True)
+            print(type(cropped_img))
+            print(cropped_img.shape)
+            pitch, roll, yaw = self.get_head_angles(head_pose_model, cropped_img)
+            print(f"pitch: {pitch}, roll: {roll}, yaw: {yaw}")
             
             # pass cropped_img to next 
 
+    def get_head_angles(self, model, image):
+        img = model.preprocess_input(image)
+        out = model.predict(img, True)
+        pitch = out['angle_p_fc'][0][0]
+        roll = out['angle_r_fc'][0][0]
+        yaw = out['angle_y_fc'][0][0]
+        return pitch, roll, yaw
 
 if __name__ == '__main__':
     m = MousEyes()
