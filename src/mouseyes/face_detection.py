@@ -28,8 +28,6 @@ class FaceDetectionModel(ModelBase):
     def get_cropped_face(self, original_img, processed_output, save_file=False):
         """Returns a np with the cropped face, in original image's size"""
         coords=processed_output[0]
-        print(coords)
-        print(original_img.shape)
         cropped_face = original_img[coords[1]:coords[3], coords[0]:coords[2]]
         #cropped_face = original_img
         #xmin, ymin, xmax, ymax = processed_output[0]
