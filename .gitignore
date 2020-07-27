@@ -4,3 +4,4 @@ models/intel/
 models/public/
 .vscode
 *.egg-info
+mouseyes.log
