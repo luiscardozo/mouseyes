@@ -133,8 +133,11 @@ class ModelBase:
                 xmax = int(box[5] * vid_width)
                 ymax = int(box[6] * vid_height)
                 coords.append([xmin, ymin, xmax, ymax])
-                
-            return np.array(coords)
+            out = np.array(coords)
+            if out.shape == (0, ):
+                return None
+            else:
+                return np.array(coords)
         else:
             raise NotImplementedError   #Implement in each subclass
     
