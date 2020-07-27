@@ -1,4 +1,4 @@
-from model import ModelBase
+from .model import ModelBase
 
 class FacialLandmarksModel(ModelBase):
     # landmarks-regression-retail-0009

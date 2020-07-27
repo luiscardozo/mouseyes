@@ -1,4 +1,4 @@
-from model import ModelBase
+from .model import ModelBase
 
 class HeadPoseEstimationModel(ModelBase):
     # head-pose-estimation-adas-0001
@@ -9,5 +9,5 @@ class HeadPoseEstimationModel(ModelBase):
     #   "angle_p_fc": [1, 1]: pitch (in degrees).
     #   "angle_r_fc": [1, 1]: roll (in degrees).
     
-    def __init__(self, model_name, device='CPU', extensions=None):
-        super().__init__(model_name, device, extensions)
+    def __init__(self, model_path, device='CPU', extensions=None, transpose=(2,0,1)):
+        super().__init__(model_path, device=device, extensions=extensions, transpose=transpose)

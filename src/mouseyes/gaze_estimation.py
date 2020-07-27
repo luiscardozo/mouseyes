@@ -1,4 +1,4 @@
-from model import ModelBase
+from .model import ModelBase
 
 class GazeEstimationModel(ModelBase):
     # gaze-estimation-adas-0002
@@ -10,4 +10,5 @@ class GazeEstimationModel(ModelBase):
     # Outputs:
     #   "gaze_vector": [1, 3]: Cartesian coordinates of gaze direction vector
 
-    pass
+    def __init__(self, model_path, device='CPU', extensions=None, transpose=(2,0,1)):
+        super().__init__(model_path, device=device, extensions=extensions, transpose=transpose)

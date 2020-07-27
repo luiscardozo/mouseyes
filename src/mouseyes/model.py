@@ -4,10 +4,11 @@ This has been provided just to give you an idea of how to structure your model c
 '''
 import os
 import logging as log
+import sys
 import cv2
 
-from openvino.inference_engine import IECore
-from mouseyes_exceptions import *
+from openvino.inference_engine import IECore, IENetwork
+from .mouseyes_exceptions import UnsupportedLayersException, ModelXmlFileNotFoundException, ModelBinFileNotFoundException
 
 class ModelBase:
     '''
@@ -37,18 +38,20 @@ class ModelBase:
             self.core.add_extension(self.extensions, self.device)
 
         # read the network structure and create an IENetwork
-        self.network = core.read_network(model=model_structure, weights=model_weights)
+        self.network = IENetwork(model=self.model_structure, weights=self.model_weights)
+        # Or in 2020.2+ =>
+        #self.network = self.core.read_network(model=model_structure, weights=model_weights)
 
         ### Check for supported layers ###
-        if self.unsupported_layers(self.network, self.device):
-            exit(1) #UnsupportedLayersException
+        #if self.unsupported_layers(self.network, self.device):
+        #    raise UnsupportedLayersException()
 
         # Get input and output names
-        self.input_name=next(iter(network.inputs))    #only for models with 1 input. Review later (eg.: Resnet have >1)
-        self.output_name=next(iter(network.outputs))
+        self.input_name=next(iter(self.network.inputs))    #only for models with 1 input. Review later (eg.: Resnet have >1)
+        self.output_name=next(iter(self.network.outputs))
         
         try:
-            self.exec_net = core.load_network(network=self.network, device_name=self.device) #num_requests=1
+            self.exec_net = self.core.load_network(network=self.network, device_name=self.device) #num_requests=1
         except Exception as e:
             if "unsupported layer" in str(e):
                 # OpenVINO throws a RuntimeException on unsupported layer,
@@ -57,7 +60,7 @@ class ModelBase:
                 print("You can try to pass a CPU Extension with the argument --cpu_extension", file=sys.stderr)
             else:
                 print(e, file=sys.stderr)
-            exit(1) #UnsupportedLayersException
+            raise UnsupportedLayersException()
 
 
     def predict(self, image, sync=False, request_id=0):
@@ -86,12 +89,12 @@ class ModelBase:
         model_xml = filename+'.xml'
 
         if not os.path.exists(model_xml):
-            err_msg = "Model XML File does not exist on path " + model_path
+            err_msg = "Model XML File does not exist in path " + os.path.abspath(model_xml)
             log.error(err_msg)
             raise ModelXmlFileNotFoundException(err_msg)
         
         if not os.path.exists(model_bin):
-            err_msg = "Model XML File does not exist on path " + model_path
+            err_msg = "Model XML File does not exist on path " + model_bin
             log.error(err_msg)
             raise ModelBinFileNotFoundException(err_msg)
 

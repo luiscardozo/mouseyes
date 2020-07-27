@@ -1,4 +1,4 @@
-from model import ModelBase
+from .model import ModelBase
 
 class FaceDetectionModel(ModelBase):
     # face-detection-adas-binary-0001
