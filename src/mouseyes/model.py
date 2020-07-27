@@ -6,6 +6,7 @@ import os
 import logging as log
 import sys
 import cv2
+import numpy as np
 
 from openvino.inference_engine import IECore, IENetwork
 from mouseyes.mouseyes_exceptions import UnsupportedLayersException, ModelXmlFileNotFoundException, ModelBinFileNotFoundException
@@ -114,24 +115,40 @@ class ModelBase:
         frame = frame.reshape(1, *frame.shape)          #depends on the model
         return frame
 
-    def preprocess_output(self, outputs):
+    def preprocess_output(self, outputs, vid_width, vid_height, label=1.0, min_threshold=0.5):
         '''
         Before feeding the output of this model to the next model,
         you might have to preprocess the output. This function is where you can do that.
         '''
-        raise NotImplementedError   #Implement in each subclass
+        if outputs.shape == (1,1,200,7):
+            coords = []
+            for box in outputs[0][0]:
+                if box[1] != label:
+                    continue
+                if box[2] < min_threshold:
+                    continue
+
+                xmin = int(box[3] * vid_width)
+                ymin = int(box[4] * vid_height)
+                xmax = int(box[5] * vid_width)
+                ymax = int(box[6] * vid_height)
+                coords.append([xmin, ymin, xmax, ymax])
+                
+            return np.array(coords)
+        else:
+            raise NotImplementedError   #Implement in each subclass
     
         
     def wait(self, request_id=0, timeout_ms=-1):
         """Waits for an async request to be complete."""
-        return self.exec_network.requests[request_id].wait(timeout_ms)
+        return self.exec_net.requests[request_id].wait(timeout_ms)
 
     def get_output(self, request_id=0, output_name=None):
         """Return the output of a finished async request"""
         if output_name is None:
             output_name = self.output_name
         
-        return self.exec_network.requests[request_id].outputs[output_name]
+        return self.exec_net.requests[request_id].outputs[output_name]
 
     def get_input_shape(self):
         return self.network.inputs[self.input_name].shape
