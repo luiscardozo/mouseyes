@@ -4,11 +4,11 @@ from mouseyes.mouseyes_exceptions import NoFaceException
 import pytest
 
 DEVICE="CPU"
-MODEL=f'models/intel/face-detection-adas-binary-0001/INT1/face-detection-adas-binary-0001.xml'
+MODEL='models/intel/face-detection-adas-binary-0001/INT1/face-detection-adas-binary-0001.xml'
 EXTENSION='/opt/intel/openvino/deployment_tools/inference_engine/lib/intel64/libcpu_extension_sse4.so'
 TEST_IMAGE="tests/resources/center.jpg"
 TEST_NO_FACE="tests/resources/sofi.jpg"
-IMAGE_SHAPE=(1, 3, 384, 672)
+INPUT_SHAPE=(1, 3, 384, 672)
 
 @pytest.fixture
 def model():
@@ -36,7 +36,7 @@ def test_predict_noface(model, image_no_face):
 
 def predict(model, image, sync):
     img = model.preprocess_input(image)
-    assert img.shape == IMAGE_SHAPE
+    assert img.shape == INPUT_SHAPE
     out = model.predict(img, sync)
     assert out.shape == (1,1,200,7)
     #w = IMAGE_SHAPE[3] # NO: this should be the original image width...
