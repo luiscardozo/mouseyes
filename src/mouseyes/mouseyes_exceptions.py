@@ -9,3 +9,7 @@ class ModelBinFileNotFoundException(Exception):
 class UnsupportedLayersException(Exception):
     """There are unsupported layers in the model"""
     pass
+
+class NoFaceException(Exception):
+    """There are no faces in the image"""
+    pass
