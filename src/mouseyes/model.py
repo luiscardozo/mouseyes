@@ -8,7 +8,7 @@ import sys
 import cv2
 
 from openvino.inference_engine import IECore, IENetwork
-from .mouseyes_exceptions import UnsupportedLayersException, ModelXmlFileNotFoundException, ModelBinFileNotFoundException
+from mouseyes.mouseyes_exceptions import UnsupportedLayersException, ModelXmlFileNotFoundException, ModelBinFileNotFoundException
 
 class ModelBase:
     '''
@@ -70,7 +70,7 @@ class ModelBase:
         input_blob = {self.input_name: image}
 
         if sync:
-            return infer_sync(input_blob) #return output blob
+            return self.infer_sync(input_blob) #return output blob
         else:
             self.infer_async(input_blob, request_id)
             if self.wait(request_id) == 0:
@@ -105,8 +105,9 @@ class ModelBase:
         Preprocess the frame according to the model needs.
         """
         if required_size is None:
-            required_size = self.get_input_shape()
-        
+            input_shape = self.get_input_shape()
+            required_size = (input_shape[3], input_shape[2])
+            
         frame = cv2.resize(image, required_size)    #ToDo: mover a input_feeder?
         #cv2.cvtColor if not BGR
         frame = frame.transpose(self.transpose_form)    #depends on the model. Initialized with the class

@@ -8,6 +8,7 @@ Sample usage:
     feed.close()
 '''
 import cv2
+import os
 from numpy import ndarray
 
 class InputFeeder:
@@ -20,6 +21,8 @@ class InputFeeder:
         self.input_type=input_type
         if input_type=='video' or input_type=='image':
             self.input_file=input_file
+            if not os.path.exists(input_file):
+                raise FileNotFoundError(os.path.abspath(input_file))
     
     def load_data(self):
         if self.input_type=='video':
@@ -47,3 +50,10 @@ class InputFeeder:
         if not self.input_type=='image':
             self.cap.release()
 
+if __name__ == '__main__':
+    TEST_IMAGE='../../tests/resources/center.jpg'
+    ifeed = InputFeeder('image', TEST_IMAGE)
+    ifeed.load_data()
+    print(ifeed.cap)
+    print(type(ifeed.cap))
+    print(ifeed.cap.shape)
