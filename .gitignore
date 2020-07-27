@@ -1,3 +1,5 @@
 env/
 *.pyc
 models/intel/
+.vscode
+*.egg-info
