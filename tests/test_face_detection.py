@@ -13,9 +13,8 @@ def model():
 
 @pytest.fixture
 def image():
-    ifeed = InputFeeder('image', TEST_IMAGE)
-    ifeed.load_data()
-    return ifeed.cap
+    ifeed = InputFeeder(TEST_IMAGE)
+    return next(ifeed)
 
 def test_predict_sync(model, image):
     img = model.preprocess_input(image)
