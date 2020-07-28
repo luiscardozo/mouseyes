@@ -37,8 +37,8 @@ def head_pose():
 def test_gaze(model, left_eye, right_eye, head_pose):
     predict_gaze(model, left_eye, right_eye, head_pose, True)
 
-#def test_gaze_async(model, image):
-#    predict_gaze(model, image, False)
+def test_gaze_async(model, left_eye, right_eye, head_pose):
+    predict_gaze(model, left_eye, right_eye, head_pose, False)
 
 def predict_gaze(model,left_eye, right_eye, head_pose, sync):
     
