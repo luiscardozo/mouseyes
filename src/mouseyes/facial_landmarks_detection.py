@@ -40,11 +40,13 @@ class FacialLandmarksModel(ModelBase):
         eyes = []
         for box in coords:
             #cv2.rectangle(image, (box[0], box[1]), (box[2], box[3]), (0, 0, 255), 1)
-            cropped_eye = frame[box[1]:box[3], box[0]:box[2]]
+            cropped_eye = frame[box[1]:box[3], box[0]:box[2]]            
             eye_nr+=1
             if save_file:
                 self._save_image(cropped_eye, f"eye{eye_nr}")
-            eyes.append(cropped_eye)
+            if cropped_eye.shape == (40,40,3):              #  ToDo: see this. It' very specific for the size given by preprocess_output()
+                eyes.append(cropped_eye)
+        
         eyes = np.array(eyes)
         return eyes
 
