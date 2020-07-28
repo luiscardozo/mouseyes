@@ -1,5 +1,6 @@
 from mouseyes.model import ModelBase
 import numpy as np
+import cv2
 
 class FacialLandmarksModel(ModelBase):
     # landmarks-regression-retail-0009
@@ -26,17 +27,36 @@ class FacialLandmarksModel(ModelBase):
         y4 = y4[0][0]
         x5 = x5[0][0]
         y5 = y5[0][0]
+        #results = outputs['95'].flatten()
         return np.array([x1, y1, x2, y2, x3, y3, x4, y4, x5, y5])
 
-    def get_cropped_eyes(self, original_img, coords, save_file=False):
+    #Copied from https://knowledge.udacity.com/questions/283702
+    def preprocess_output(self, results, image):
+        height, width = image.shape[0:2]
+        #print(f"Output Height: {height} :: Width: {width}")
+        coordinates = []
+        for i in range(0,4,2):
+            point = (int(results[i]*width), int(results[i+1]*height))
+            xmin = point[0]-20
+            ymin = point[1]-20
+            xmax = point[0]+20
+            ymax = point[1]+20
+            coordinates.append((xmin, ymin, xmax, ymax))
+        return coordinates
+
+    def get_cropped_eyes(self, frame, landmarks, save_file=False):
         """Returns a np with the cropped eyes, in original image's size"""
-        
-        right_eye = original_img[coords[1]:coords[3], coords[0]:coords[2]]
-        left_eye = original_img[coords[1]:coords[3], coords[0]:coords[2]]
-        if save_file:
-            self._save_image(right_eye, "right-eye")
-            self._save_image(left_eye, "left-eye")
-        return right_eye, left_eye
+        coords = self.preprocess_output(landmarks, frame)
+        eye_nr=1
+        eyes = []
+        for box in coords:
+            #cv2.rectangle(image, (box[0], box[1]), (box[2], box[3]), (0, 0, 255), 1)
+            cropped_eye = frame[box[1]:box[3], box[0]:box[2]]
+            eye_nr+=1
+            if save_file:
+                self._save_image(cropped_eye, f"eye{eye_nr}")
+            eyes.append(cropped_eye)
+        return eyes
 
     def _save_image(self, frame, name):
         img_path = f'/home/luis/tmp/{name}.jpg'    #for debug only. Change to your own dir

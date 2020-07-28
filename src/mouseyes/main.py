@@ -164,6 +164,7 @@ class MousEyes:
         img = model.preprocess_input(image)
         out = model.predict(img, sync)
         #x1, y1, x2, y2, x3, y3, x4, y4, x5, y5 = out
+        model.get_cropped_eyes(image, out, True)
         return out
 
     def draw_landmarks(self, frame, landmarks):
