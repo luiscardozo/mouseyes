@@ -67,7 +67,7 @@ class MousEyes:
                             help="Path to the file to write the log")
         parser.add_argument("-ll", "--loglevel", type=str, default=DEFAULT_LOGLEVEL,
                             help="Level of verbosity log")
-        parser.add_argument("--dev", required=False, action="store_true",
+        parser.add_argument("-dev", "--dev", required=False, action="store_true",
                             help="Set options to ease the development.\n"
                             "Same as using -s")
         return parser
@@ -134,11 +134,13 @@ class MousEyes:
             print(f"pitch: {pitch}, roll: {roll}, yaw: {yaw}")
             
             # get cropped eyes:
-            landmarks = self.get_cropped_eyes(landmark_model, cropped_face)
+            eyes, landmarks = self.get_cropped_eyes(landmark_model, cropped_face)
 
             if args.show_window:
                 frame_landmarks = self.draw_landmarks(cropped_face, landmarks)
                 cv2.imshow('landmarks', frame_landmarks)
+                cv2.imshow('right', eyes[0])
+                cv2.imshow('left', eyes[1])
                 #wait for a key
                 key_pressed = cv2.waitKey(30)
                 if key_pressed == 27 or key_pressed == 113: #Esc or q
@@ -162,10 +164,10 @@ class MousEyes:
         If sync is True, run the prediction in sync mode, else async.
         """
         img = model.preprocess_input(image)
-        out = model.predict(img, sync)
+        landmarks = model.predict(img, sync)
         #x1, y1, x2, y2, x3, y3, x4, y4, x5, y5 = out
-        model.get_cropped_eyes(image, out, True)
-        return out
+        eyes = model.get_cropped_eyes(image, landmarks, True)
+        return eyes, landmarks
 
     def draw_landmarks(self, frame, landmarks):
         print(frame.shape)

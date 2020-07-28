@@ -34,7 +34,7 @@ class FacialLandmarksModel(ModelBase):
         return coordinates
 
     def get_cropped_eyes(self, frame, landmarks, save_file=False):
-        """Returns a np with the cropped eyes, in original image's size"""
+        """Returns a np with the cropped eyes, from original image's size"""
         coords = self.preprocess_output(landmarks, frame)
         eye_nr=1
         eyes = []
