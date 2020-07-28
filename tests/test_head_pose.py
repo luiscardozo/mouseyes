@@ -1,6 +1,7 @@
 from mouseyes.head_pose_estimation import HeadPoseEstimationModel
 from mouseyes.input_feeder import InputFeeder
 import pytest
+import numpy as np
 
 DEVICE="CPU"
 PRECISION="FP32"
@@ -20,6 +21,15 @@ def model():
 def image():
     ifeed = InputFeeder(TEST_IMAGE)
     return next(ifeed)
+
+@pytest.fixture
+def outputs():
+    # simulate the output of HeadPoseEstimationModel.predict()
+    return {
+        "angle_p_fc": np.array([[PITCH]]),
+        "angle_r_fc": np.array([[ROLL]]),
+        "angle_y_fc": np.array([[YAW]]),
+    }
 
 def test_head_pose(model, image):
     img = model.preprocess_input(image)
@@ -61,3 +71,27 @@ def test_head_pose_async(model, image):
     assert pitch[0] == PITCH
     assert roll[0] == ROLL
     assert yaw[0] == YAW
+
+def test_postprocess(model, outputs):
+    # Gaze pide "np.array([YAW, PITCH, ROLL])"
+    assert "angle_p_fc" in outputs
+    assert "angle_r_fc" in outputs
+    assert "angle_y_fc" in outputs
+
+    pitch = outputs['angle_p_fc']
+    roll = outputs['angle_r_fc']
+    yaw = outputs['angle_y_fc']
+
+    assert pitch.shape == (1,1)
+    assert roll.shape == (1,1)
+    assert yaw.shape == (1,1)
+
+    assert pitch[0] == PITCH
+    assert roll[0] == ROLL
+    assert yaw[0] == YAW
+
+    out = model.preprocess_output(outputs)
+    assert out.shape == (3,)
+    assert out[0] == pytest.approx(YAW)
+    assert out[1] == pytest.approx(PITCH)
+    assert out[2] == pytest.approx(ROLL)
