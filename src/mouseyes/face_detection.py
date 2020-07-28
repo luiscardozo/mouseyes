@@ -17,13 +17,6 @@ class FaceDetectionModel(ModelBase):
     def __init__(self, model_path=DEFAULT_MODEL, device=DEFAULT_DEVICE, extensions=DEFAULT_EXTENSION, transpose=DEFAULT_TRANSPOSE):
         super().__init__(model_path, device=device, extensions=extensions, transpose=transpose)
         print("Input shape:", super().get_input_shape)
-
-    def predict(self, image, sync=False, request_id=0):
-        output = super().predict(image, sync, request_id)
-        if sync:
-            output = output['detection_out']
-
-        return output
     
     def get_cropped_face(self, original_img, processed_output, save_file=False):
         """Returns a np with the cropped face, in original image's size"""
