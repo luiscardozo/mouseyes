@@ -102,18 +102,20 @@ class ModelBase:
 
         return model_xml, model_bin    
     
-    def preprocess_input(self, image, required_size=None):
+    def preprocess_input(self, image, required_size=None, input_name=None):
         """
         Preprocess the frame according to the model needs.
         """
         if required_size is None:
-            input_shape = self.get_input_shape()
+            input_name = self.input_name if input_name is None else input_name
+            input_shape = self.get_input_shape(input_name)
             required_size = (input_shape[3], input_shape[2])
-            
+
         frame = cv2.resize(image, required_size)    #ToDo: mover a input_feeder?
         #cv2.cvtColor if not BGR
         frame = frame.transpose(self.transpose_form)    #depends on the model. Initialized with the class
         frame = frame.reshape(1, *frame.shape)          #depends on the model
+        
         return frame
 
     def preprocess_output(self, outputs, vid_width, vid_height, label=1.0, min_threshold=0.5):
@@ -154,8 +156,10 @@ class ModelBase:
         
         return self.exec_net.requests[request_id].outputs[output_name]
 
-    def get_input_shape(self):
-        return self.network.inputs[self.input_name].shape
+    def get_input_shape(self, input_name=None):
+        if input_name is None:
+            input_name = self.input_name
+        return self.network.inputs[input_name].shape
 
     def get_output_shape(self):
         return self.network.outputs[self.output_name].shape
