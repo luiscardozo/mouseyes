@@ -2,6 +2,7 @@ from argparse import ArgumentParser
 import cv2
 import logging as log
 import sys
+import os
 
 from mouseyes.face_detection import FaceDetectionModel
 from mouseyes.head_pose_estimation import HeadPoseEstimationModel

@@ -84,7 +84,7 @@ class InputFeeder:
         """
         # based on https://docs.opencv.org/2.4/modules/highgui/doc/reading_and_writing_images_and_video.html
         pics = ["jpg", "jpeg", "png", "gif", "bmp", "jpe", "jp2", "tiff", "tif"]
-        movs = ["avi", "mpg", "mp4", "mkv", "ogv"]
+        movs = ["avi", "mpg", "mp4", "mkv", "ogv", "webm"]
 
         input_type = None
         
