@@ -14,4 +14,11 @@ class HeadPoseEstimationModel(ModelBase):
     def __init__(self, model_path, device='CPU', extensions=None, transpose=(2,0,1)):
         super().__init__(model_path, device=device, extensions=extensions, transpose=transpose)
 
-    
+    def predict(self, image, sync=False, request_id=0):
+        super().predict(image, sync, request_id)
+        output = {
+            "angle_p_fc": self.get_output(request_id, "angle_p_fc"),
+            "angle_r_fc": self.get_output(request_id, "angle_r_fc"),
+            "angle_y_fc": self.get_output(request_id, "angle_y_fc"),
+        }
+        return output
