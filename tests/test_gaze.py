@@ -13,6 +13,9 @@ LEFT_EYE_IMAGE="tests/resources/right_eye.jpg"
 PITCH=5.169604
 ROLL=-0.56816363
 YAW=-6.813993
+GAZE_X=-0.04466014
+GAZE_Y=0.090213664
+GAZE_Z=-0.98609734
 
 @pytest.fixture
 def model():
@@ -34,6 +37,10 @@ def right_eye():
 def head_pose():
     return np.array([YAW, PITCH, ROLL])
 
+@pytest.fixture
+def gaze_output():
+    return np.array([[GAZE_X, GAZE_Y, GAZE_Z]])
+
 def test_gaze(model, left_eye, right_eye, head_pose):
     predict_gaze(model, left_eye, right_eye, head_pose, True)
 
@@ -48,8 +55,16 @@ def predict_gaze(model,left_eye, right_eye, head_pose, sync):
     out = model.predict(prep_left, prep_right, prep_hp, sync)
 
     assert out.shape == (1, 3)
-    print(out)
-    assert out[0][0] == pytest.approx(-0.04466014)
-    assert out[0][1] == pytest.approx(0.090213664)
-    assert out[0][2] == pytest.approx(-0.98609734)
+    
+    assert out[0][0] == pytest.approx(GAZE_X)
+    assert out[0][1] == pytest.approx(GAZE_Y)
+    assert out[0][2] == pytest.approx(GAZE_Z)
 
+def test_gaze_postprocess(model, gaze_output):
+    assert gaze_output.shape == (1, 3)
+    assert gaze_output[0][0] == pytest.approx(GAZE_X)
+    assert gaze_output[0][1] == pytest.approx(GAZE_Y)
+    assert gaze_output[0][2] == pytest.approx(GAZE_Z)
+
+    out = model.preprocess_output(gaze_output)
+    assert out.shape == (3,)
