@@ -3,6 +3,7 @@ import cv2
 import logging as log
 import sys
 import os
+import threading
 
 from mouseyes.face_detection import FaceDetectionModel
 from mouseyes.head_pose_estimation import HeadPoseEstimationModel
@@ -30,7 +31,7 @@ DEFAULT_CONFIDENCE=0.5
 DEFAULT_LOGFILE="mouseyes.log"
 DEFAULT_LOGLEVEL="DEBUG"
 MAIN_DISPLAY="display"
-MOUSE_PRECISION="high"
+MOUSE_PRECISION="low"
 MOUSE_SPEED="fast"
 
 class MousEyes:
@@ -136,6 +137,16 @@ class MousEyes:
     def draw_info(self, frame, info):
         cv2.putText(frame, info, (100, 100), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255,0,0), thickness=2)
     
+    def move_mouse(self):
+        while self.continue_thread:
+            x, y = self.mouse_coords
+
+            if x is None or y is None:
+                continue
+            else:
+                self.mouse.move(x, y)
+
+
     def main(self):
 
         #handle the command line arguments
@@ -150,7 +161,12 @@ class MousEyes:
         head_pose_model = HeadPoseEstimationModel(args.head_pose_model, args.device, args.cpu_extension)
         landmark_model = FacialLandmarksModel(args.landmarks_model, args.device, args.cpu_extension)
         gaze_model = GazeEstimationModel(args.gaze_model, args.device, args.cpu_extension)
-        mouse = MouseController(args.mouse_precision, args.mouse_speed)
+        self.mouse = MouseController(args.mouse_precision, args.mouse_speed)
+
+        self.continue_thread = True
+        self.mouse_coords = (None, None)
+        t = threading.Thread(target=self.move_mouse)
+        t.start()
 
         #open video and process the frames
         ifeed = InputFeeder(args.input)
@@ -216,31 +232,12 @@ class MousEyes:
                 if key_pressed == 27 or key_pressed == 113: #Esc or q
                     break #exit the for frame in ifeed loop
             """
-            direction = "Move to"
-            if gaze_x > 0:
-                direction += " Left"
-            elif gaze_x < 0:
-                direction += " Right"
-            else:
-                direction += " Stay(Horiz)"
 
-            if gaze_y > 0:
-                direction += " Up"
-            elif gaze_y < 0:
-                direction += " Down"
-            else:
-                direction += " Stay(Vert)"
+            #self.mouse.move(gaze_x, gaze_y)
+            self.mouse_coords = (gaze_x, gaze_y)        #the separated thread will update the mouse pointer
 
-            if gaze_z > 0:
-                direction += " Diagonal1"
-            elif gaze_y < 0:
-                direction += " Diagonal2"
-            else:
-                direction += " Stay(Diagonal)"
-
-            print(direction)
-
-            mouse.move(gaze_x, gaze_y)
+        self.continue_thread = False
+        t.join()
 
 
     def get_face_coords(self, model, frame):
