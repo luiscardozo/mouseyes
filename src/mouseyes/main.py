@@ -70,8 +70,8 @@ class MousEyes:
                             help="Name of the output video")
         parser.add_argument("-f", "--disable_video_file", required=False, action="store_true",
                             help="Disable the output video file creation")
-        parser.add_argument("-s", "--show_window", required=False, action="store_true",
-                            help="Shows a Window with the processed output of the image or video")
+        parser.add_argument("-w", "--hide_window", required=False, action="store_true",
+                            help="Hide the Window with the processed output of the image or video")
         parser.add_argument("-k", "--skip_frames", type=int, default=0,
                             help="Skip # of frames on the start of the video.")
         parser.add_argument("-L", "--logfile", type=str, default=DEFAULT_LOGFILE,
@@ -105,7 +105,7 @@ class MousEyes:
             exit(1)
 
         if args.dev:
-            args.show_window = True
+            args.hide_window = False
             #and others in the future
 
     def draw_masks(self, frame, coords):
@@ -174,7 +174,7 @@ class MousEyes:
             #get the face coords
             face_coords = self.get_face_coords(face_model, frame)
             
-            if args.show_window:
+            if not args.hide_window:
                 painted_frame = self.draw_masks(frame, face_coords)
                 cv2.imshow(MAIN_DISPLAY, painted_frame)
                 #wait for a key
@@ -202,7 +202,7 @@ class MousEyes:
             right_eye = eyes[0]
             left_eye = eyes[1]
 
-            if args.show_window:
+            if not args.hide_window:
                 if args.display_landmarks:
                     #frame_landmarks = self.draw_landmarks(cropped_face, landmarks)
                     #cv2.imshow('landmarks', frame_landmarks)
@@ -225,7 +225,7 @@ class MousEyes:
             #print(gaze_info)
 
             """
-            if args.show_window:
+            if not args.hide_window:
                 frame_with_info = self.draw_info(painted_frame, gaze_info)
                 cv2.imshow(MAIN_DISPLAY, frame_with_info)
                 key_pressed = cv2.waitKey(30)
