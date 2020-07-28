@@ -24,6 +24,11 @@ def test_landmarks(model, image):
 def test_landmarks_async(model, image):
     predict(model, image, False)
 
+def test_cropped_eyes(model, image):
+    landmarks = predict(model, image, True)
+    eyes = model.get_cropped_eyes(image, landmarks, save_file=True)
+    assert eyes.shape == (2, 40, 40, 3)
+
 def predict(model, image, sync):
     img = model.preprocess_input(image)
     assert img.shape == INPUT_SHAPE
@@ -35,3 +40,4 @@ def predict(model, image, sync):
     assert x1 == pytest.approx(0.2390861)
     assert x3 == pytest.approx(0.42645836)
     assert y5 == pytest.approx(0.7644643)
+    return out
