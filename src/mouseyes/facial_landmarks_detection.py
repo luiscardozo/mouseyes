@@ -45,6 +45,7 @@ class FacialLandmarksModel(ModelBase):
             if save_file:
                 self._save_image(cropped_eye, f"eye{eye_nr}")
             eyes.append(cropped_eye)
+        eyes = np.array(eyes)
         return eyes
 
     def _save_image(self, frame, name):
