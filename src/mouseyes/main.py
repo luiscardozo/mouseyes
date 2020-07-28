@@ -1,6 +1,7 @@
 from argparse import ArgumentParser
 import cv2
 import logging as log
+import sys
 
 from mouseyes.face_detection import FaceDetectionModel
 from mouseyes.head_pose_estimation import HeadPoseEstimationModel
@@ -81,14 +82,25 @@ class MousEyes:
         parser.add_argument("--display_landmarks", required=False, action="store_true",
                             help="Display the landmarks in the output video")
         parser.add_argument("-mp", "--mouse_precision", type=str, default=MOUSE_PRECISION,
-                            help="Precision of the mouse pointer")
+                            help="Precision of the mouse pointer. Possible values: high, medium, low")
         parser.add_argument("-ms", "--mouse_speed", type=str, default=MOUSE_SPEED,
-                            help="Speed of the mouse pointer")
+                            help="Speed of the mouse pointer. Possible values: fast, medium, slow")
         return parser
 
     def sanitize_input(self, args):
         if not args.input.lower() == "cam" and not args.input == "0":
             args.input = os.path.abspath(args.input)    #opencv/ffmeg requires full path on my laptop
+
+        #high, medium, low mouse_precision
+        mp = {'high', 'medium', 'low'}
+        ms = {'fast', 'medium', 'slow'}
+
+        if args.mouse_precision not in mp:
+            print('Invalid values for mouse_precision. Please use high, medium or low', file=sys.stderr)
+            exit(1)
+        if args.mouse_speed not in ms:
+            print('Invalid values for mouse_speed. Please use fast, medium or slow', file=sys.stderr)
+            exit(1)
 
         if args.dev:
             args.show_window = True
