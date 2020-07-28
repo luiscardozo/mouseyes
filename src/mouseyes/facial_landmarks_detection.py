@@ -16,19 +16,8 @@ class FacialLandmarksModel(ModelBase):
     
     def predict(self, image, sync=False, request_id=0):
         out = super().predict(image, sync=sync, request_id=request_id)
-        x1, y1, x2, y2, x3, y3, x4, y4, x5, y5 = out[0]
-        x1 = x1[0][0]
-        y1 = y1[0][0]
-        x2 = x2[0][0]
-        y2 = y2[0][0]
-        x3 = x3[0][0]
-        y3 = y3[0][0]
-        x4 = x4[0][0]
-        y4 = y4[0][0]
-        x5 = x5[0][0]
-        y5 = y5[0][0]
-        #results = outputs['95'].flatten()
-        return np.array([x1, y1, x2, y2, x3, y3, x4, y4, x5, y5])
+        #x1, y1, x2, y2, x3, y3, x4, y4, x5, y5 = out[0]
+        return out.flatten()
 
     #Copied from https://knowledge.udacity.com/questions/283702
     def preprocess_output(self, results, image):
