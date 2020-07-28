@@ -1,4 +1,9 @@
-from .model import ModelBase
+from mouseyes.model import ModelBase
+import numpy as np
+
+YAW="angle_y_fc"
+PITCH="angle_p_fc"
+ROLL="angle_r_fc"
 
 class HeadPoseEstimationModel(ModelBase):
     # head-pose-estimation-adas-0001
@@ -22,3 +27,10 @@ class HeadPoseEstimationModel(ModelBase):
             "angle_y_fc": self.get_output(request_id, "angle_y_fc"),
         }
         return output
+
+    def preprocess_output(self, outputs):
+        """
+        Postprocess the outputs for the usage in Gaze Estimation.
+        format: np.array [YAW, PITCH, ROLL]. Shape: (3, )
+        """
+        return np.array([outputs[YAW].flatten(), outputs[PITCH].flatten(), outputs[ROLL].flatten()]).flatten()
