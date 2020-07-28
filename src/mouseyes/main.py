@@ -4,6 +4,7 @@ import logging as log
 
 from mouseyes.face_detection import FaceDetectionModel
 from mouseyes.head_pose_estimation import HeadPoseEstimationModel
+from mouseyes.facial_landmarks_detection import FacialLandmarksModel
 from mouseyes.input_feeder import InputFeeder
 
 
@@ -17,6 +18,7 @@ DEVICE="CPU"
 PRECISION="FP32"
 FACE_MODEL='models/intel/face-detection-adas-binary-0001/INT1/face-detection-adas-binary-0001.xml'
 HEAD_POSE_MODEL=f'models/intel/head-pose-estimation-adas-0001/{PRECISION}/head-pose-estimation-adas-0001.xml'
+LANDMARKS_MODEL=f'models/intel/landmarks-regression-retail-0009/{PRECISION}/landmarks-regression-retail-0009.xml'
 EXTENSION='/opt/intel/openvino/deployment_tools/inference_engine/lib/intel64/libcpu_extension_sse4.so'
 DEFAULT_INPUT="cam"
 DEFAULT_CONFIDENCE=0.5
@@ -36,6 +38,8 @@ class MousEyes:
                             help="Path to an xml file with a trained model for Face Detection.")
         parser.add_argument("-mh", "--head_pose_model", required=False, type=str, default=HEAD_POSE_MODEL,
                             help="Path to an xml file with a trained model for Head Pose Estimation.")
+        parser.add_argument("-ml", "--landmarks_model", required=False, type=str, default=LANDMARKS_MODEL,
+                            help="Path to an xml file with a trained model for Head Landmarks extraction.")
         parser.add_argument("-i", "--input", required=False, type=str, default=DEFAULT_INPUT,
                             help="Path to image or video file. 'cam' for WebCam")
         parser.add_argument("-l", "--cpu_extension", required=False, type=str,
@@ -100,15 +104,16 @@ class MousEyes:
         #initialize the models
         face_model = FaceDetectionModel(args.face_model, args.device, args.cpu_extension)
         head_pose_model = HeadPoseEstimationModel(args.head_pose_model, args.device, args.cpu_extension)
+        landmark_model = FacialLandmarksModel(args.landmarks_model, args.device, args.cpu_extension)
         #open video and process the frames
         ifeed = InputFeeder(args.input)
         for frame in ifeed:
             #get the cropped face
             image = face_model.preprocess_input(frame)
-            out = face_model.predict(image)
+            landmarks = face_model.predict(image)
             w = frame.shape[1]
             h = frame.shape[0]
-            proc_out = face_model.preprocess_output(out, w, h)
+            proc_out = face_model.preprocess_output(landmarks, w, h)
             
             if args.show_window:
                 painted_frame = self.draw_masks(frame, proc_out)
@@ -121,21 +126,53 @@ class MousEyes:
             if proc_out is None:
                 continue
 
-            cropped_img = face_model.get_cropped_face(frame, proc_out, True)
-            print(type(cropped_img))
-            print(cropped_img.shape)
-            pitch, roll, yaw = self.get_head_angles(head_pose_model, cropped_img)
+            #crop the face
+            cropped_face = face_model.get_cropped_face(frame, proc_out)
+
+            #get head angles
+            pitch, roll, yaw = self.get_head_angles(head_pose_model, cropped_face)
             print(f"pitch: {pitch}, roll: {roll}, yaw: {yaw}")
             
-            # pass cropped_img to next 
+            # get cropped eyes:
+            landmarks = self.get_cropped_eyes(landmark_model, cropped_face)
 
-    def get_head_angles(self, model, image):
+            if args.show_window:
+                frame_landmarks = self.draw_landmarks(cropped_face, landmarks)
+                cv2.imshow('landmarks', frame_landmarks)
+                #wait for a key
+                key_pressed = cv2.waitKey(30)
+                if key_pressed == 27 or key_pressed == 113: #Esc or q
+                    break #exit the for frame in ifeed loop
+
+    def get_head_angles(self, model, image, sync=True):
+        """
+        Get the head angles (pitch, roll, yaw) from the current *image*, using the *model*.
+        If sync is True, run the prediction in sync mode, else async.
+        """
         img = model.preprocess_input(image)
-        out = model.predict(img, True)
-        pitch = out['angle_p_fc'][0][0]
-        roll = out['angle_r_fc'][0][0]
-        yaw = out['angle_y_fc'][0][0]
-        return pitch, roll, yaw
+        out = model.predict(img, sync)
+        pitch = out['angle_p_fc'][0][0] # pitch = up / down (as in "Yes")
+        roll = out['angle_r_fc'][0][0]  # roll = diagonal head movement (as in "What?")
+        yaw = out['angle_y_fc'][0][0]   # yaw  = head to left / right (as in "No")
+        return pitch, roll, yaw         # Tait-Bryan angles (yaw, pitch or roll)
+
+    def get_cropped_eyes(self, model, image, sync=True):
+        """
+        Get the 2 cropped eyes from original *image* of the cropped face, using *model*.
+        If sync is True, run the prediction in sync mode, else async.
+        """
+        img = model.preprocess_input(image)
+        out = model.predict(img, sync)
+        #x1, y1, x2, y2, x3, y3, x4, y4, x5, y5 = out
+        return out
+
+    def draw_landmarks(self, frame, landmarks):
+        print(frame.shape)
+        height, width = frame.shape[0:2]            #https://knowledge.udacity.com/questions/283702
+        for i in range(0,10,2):
+            cv2.circle(frame, (int(landmarks[i]*width), int(landmarks[i+1]*height)),
+                                radius=5, color=(255,255,0), thickness=2)
+        return frame
 
 if __name__ == '__main__':
     m = MousEyes()
