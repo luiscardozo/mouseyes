@@ -25,6 +25,7 @@ def test_head_pose(model, image):
     img = model.preprocess_input(image)
     assert img.shape == INPUT_SHAPE
     out = model.predict(img, True)
+    print(out)
     assert "angle_p_fc" in out
     assert "angle_r_fc" in out
     assert "angle_y_fc" in out
@@ -42,10 +43,17 @@ def test_head_pose(model, image):
 def test_head_pose_async(model, image):
     img = model.preprocess_input(image)
     assert img.shape == INPUT_SHAPE
-    model.predict(img) #only returns 1 output, in this case is better to get every output separately
-    pitch = model.get_output(0, "angle_p_fc")
-    roll = model.get_output(0, "angle_r_fc")
-    yaw = model.get_output(0, "angle_y_fc")
+    out = model.predict(img) #only returns 1 output, in this case is better to get every output separately
+    #pitch = model.get_output(0, "angle_p_fc")
+    #roll = model.get_output(0, "angle_r_fc")
+    #yaw = model.get_output(0, "angle_y_fc")
+    assert "angle_p_fc" in out
+    assert "angle_r_fc" in out
+    assert "angle_y_fc" in out
+    pitch = out['angle_p_fc']
+    roll = out['angle_r_fc']
+    yaw = out['angle_y_fc']
+
     assert pitch.shape == (1,1)
     assert roll.shape == (1,1)
     assert yaw.shape == (1,1)
