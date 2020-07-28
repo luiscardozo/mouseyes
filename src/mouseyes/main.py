@@ -26,6 +26,7 @@ DEFAULT_INPUT="cam"
 DEFAULT_CONFIDENCE=0.5
 DEFAULT_LOGFILE="mouseyes.log"
 DEFAULT_LOGLEVEL="DEBUG"
+MAIN_DISPLAY="display"
 
 class MousEyes:
 
@@ -74,6 +75,8 @@ class MousEyes:
         parser.add_argument("-dev", "--dev", required=False, action="store_true",
                             help="Set options to ease the development.\n"
                             "Same as using -s")
+        parser.add_argument("--display_landmarks", required=False, action="store_true",
+                            help="Display the landmarks in the output video")
         return parser
 
     def sanitize_input(self, args):
@@ -96,6 +99,20 @@ class MousEyes:
             cv2.rectangle(frame, (xmin, ymin), (xmax, ymax), (255, 0, 0), 2)
         return frame
 
+    def draw_landmarks(self, frame, landmarks, orig_frame=None, face_coords=None):
+        
+        height, width = frame.shape[0:2]            #https://knowledge.udacity.com/questions/283702
+        xmin, ymin = (0, 0)
+
+        if orig_frame is not None and face_coords is not None:
+            xmin, ymin, xmax, ymax = face_coords[0]
+            frame = orig_frame
+
+        for i in range(0,4,2):
+            cv2.circle(frame, (int(landmarks[i]*width)+xmin, int(landmarks[i+1]*height)+ymin),
+                                radius=10, color=(255,255,0), thickness=2)
+        return frame
+    
     def main(self):
 
         #handle the command line arguments
@@ -110,29 +127,27 @@ class MousEyes:
         head_pose_model = HeadPoseEstimationModel(args.head_pose_model, args.device, args.cpu_extension)
         landmark_model = FacialLandmarksModel(args.landmarks_model, args.device, args.cpu_extension)
         gaze_model = GazeEstimationModel(args.gaze_model, args.device, args.cpu_extension)
+
         #open video and process the frames
         ifeed = InputFeeder(args.input)
         for frame in ifeed:
-            #get the cropped face
-            image = face_model.preprocess_input(frame)
-            landmarks = face_model.predict(image)
-            w = frame.shape[1]
-            h = frame.shape[0]
-            proc_out = face_model.preprocess_output(landmarks, w, h)
+            #get the face coords
+            face_coords = self.get_face_coords(face_model, frame)
             
             if args.show_window:
-                painted_frame = self.draw_masks(frame, proc_out)
-                cv2.imshow('display', painted_frame)
+                painted_frame = self.draw_masks(frame, face_coords)
+                cv2.imshow(MAIN_DISPLAY, painted_frame)
                 #wait for a key
+                #if face_coords is None:     #only waitkey (shows the window) if no face coords. Else, overwrite before displaying
                 key_pressed = cv2.waitKey(30)
                 if key_pressed == 27 or key_pressed == 113: #Esc or q
                     break #exit the for frame in ifeed loop
 
-            if proc_out is None:
+            if face_coords is None:
                 continue
 
             #crop the face
-            cropped_face = face_model.get_cropped_face(frame, proc_out)
+            cropped_face = face_model.get_cropped_face(frame, face_coords)
 
             #get head angles
             head_angles = self.get_head_angles(head_pose_model, cropped_face)
@@ -146,22 +161,33 @@ class MousEyes:
 
             right_eye = eyes[0]
             left_eye = eyes[1]
+
             if args.show_window:
-                frame_landmarks = self.draw_landmarks(cropped_face, landmarks)
-                cv2.imshow('landmarks', frame_landmarks)
-                cv2.imshow('right', right_eye)
-                cv2.imshow('left', left_eye)
+                if args.display_landmarks:
+                    #frame_landmarks = self.draw_landmarks(cropped_face, landmarks)
+                    #cv2.imshow('landmarks', frame_landmarks)
+                    frame_landmarks = self.draw_landmarks(cropped_face, landmarks, frame, face_coords)
+                    cv2.imshow(MAIN_DISPLAY, frame_landmarks)
+                #cv2.imshow('right', right_eye)
+                #cv2.imshow('left', left_eye)
                 #wait for a key
                 key_pressed = cv2.waitKey(30)
+                if key_pressed == 108: #'l' de Landmark
+                    args.display_landmarks = not args.display_landmarks
                 if key_pressed == 27 or key_pressed == 113: #Esc or q
                     break #exit the for frame in ifeed loop
 
             # get the gaze estimation
             gaze_estimation = self.get_gaze_estimation(gaze_model, right_eye, left_eye, head_angles)
             gaze_x, gaze_y, gaze_z = gaze_estimation
-            print("///////////////////////////////////////////////")
             print(f"Gaze: {gaze_x},{gaze_y}, {gaze_z}")
-            
+
+    def get_face_coords(self, model, frame):
+        image = model.preprocess_input(frame)
+        landmarks = model.predict(image)
+        w = frame.shape[1]
+        h = frame.shape[0]
+        return model.preprocess_output(landmarks, w, h)
 
     def get_head_angles(self, model, image, sync=True):
         """
@@ -191,14 +217,6 @@ class MousEyes:
         prep_left, prep_right, prep_hp = model.preprocess_input(left_eye, right_eye, head_pose)
         out = model.predict(prep_left, prep_right, prep_hp, sync)
         return model.preprocess_output(out)
-
-    def draw_landmarks(self, frame, landmarks):
-        print(frame.shape)
-        height, width = frame.shape[0:2]            #https://knowledge.udacity.com/questions/283702
-        for i in range(0,10,2):
-            cv2.circle(frame, (int(landmarks[i]*width), int(landmarks[i+1]*height)),
-                                radius=5, color=(255,255,0), thickness=2)
-        return frame
 
 if __name__ == '__main__':
     m = MousEyes()

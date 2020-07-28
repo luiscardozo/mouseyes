@@ -33,4 +33,4 @@ class HeadPoseEstimationModel(ModelBase):
         Postprocess the outputs for the usage in Gaze Estimation.
         format: np.array [YAW, PITCH, ROLL]. Shape: (3, )
         """
-        return np.array([outputs[YAW].flatten(), outputs[PITCH].flatten(), outputs[ROLL].flatten()]).flatten()
+        return np.array([outputs[YAW], outputs[PITCH], outputs[ROLL]]).flatten()

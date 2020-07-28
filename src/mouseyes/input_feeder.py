@@ -53,7 +53,7 @@ class InputFeeder:
                 raise StopIteration
             else:
                 self._frame_nr += 1
-                print(f"Frame {self._frame_nr} of {self._total_frames}")
+                #print(f"Frame {self._frame_nr} of {self._total_frames}")
                 flag, raw_frame = self._cap.read()
                 if not flag:
                     self._close_cap()
