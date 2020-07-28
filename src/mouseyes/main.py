@@ -7,6 +7,7 @@ from mouseyes.head_pose_estimation import HeadPoseEstimationModel
 from mouseyes.facial_landmarks_detection import FacialLandmarksModel
 from mouseyes.gaze_estimation import GazeEstimationModel
 from mouseyes.input_feeder import InputFeeder
+from mouseyes.mouse_controller import MouseController
 
 
 # 1. video => face detection => cropped face img
@@ -27,6 +28,8 @@ DEFAULT_CONFIDENCE=0.5
 DEFAULT_LOGFILE="mouseyes.log"
 DEFAULT_LOGLEVEL="DEBUG"
 MAIN_DISPLAY="display"
+MOUSE_PRECISION="high"
+MOUSE_SPEED="fast"
 
 class MousEyes:
 
@@ -77,6 +80,10 @@ class MousEyes:
                             "Same as using -s")
         parser.add_argument("--display_landmarks", required=False, action="store_true",
                             help="Display the landmarks in the output video")
+        parser.add_argument("-mp", "--mouse_precision", type=str, default=MOUSE_PRECISION,
+                            help="Precision of the mouse pointer")
+        parser.add_argument("-ms", "--mouse_speed", type=str, default=MOUSE_SPEED,
+                            help="Speed of the mouse pointer")
         return parser
 
     def sanitize_input(self, args):
@@ -112,6 +119,9 @@ class MousEyes:
             cv2.circle(frame, (int(landmarks[i]*width)+xmin, int(landmarks[i+1]*height)+ymin),
                                 radius=10, color=(255,255,0), thickness=2)
         return frame
+
+    def draw_info(self, frame, info):
+        cv2.putText(frame, info, (100, 100), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255,0,0), thickness=2)
     
     def main(self):
 
@@ -127,6 +137,7 @@ class MousEyes:
         head_pose_model = HeadPoseEstimationModel(args.head_pose_model, args.device, args.cpu_extension)
         landmark_model = FacialLandmarksModel(args.landmarks_model, args.device, args.cpu_extension)
         gaze_model = GazeEstimationModel(args.gaze_model, args.device, args.cpu_extension)
+        mouse = MouseController(args.mouse_precision, args.mouse_speed)
 
         #open video and process the frames
         ifeed = InputFeeder(args.input)
@@ -152,7 +163,7 @@ class MousEyes:
             #get head angles
             head_angles = self.get_head_angles(head_pose_model, cropped_face)
             yaw, pitch, roll = head_angles
-            print(f"pitch: {pitch}, roll: {roll}, yaw: {yaw}")
+            #print(f"pitch: {pitch}, roll: {roll}, yaw: {yaw}")
             
             # get cropped eyes:
             eyes, landmarks = self.get_cropped_eyes(landmark_model, cropped_face)
@@ -180,7 +191,44 @@ class MousEyes:
             # get the gaze estimation
             gaze_estimation = self.get_gaze_estimation(gaze_model, right_eye, left_eye, head_angles)
             gaze_x, gaze_y, gaze_z = gaze_estimation
-            print(f"Gaze: {gaze_x},{gaze_y}, {gaze_z}")
+
+            gaze_info = f"Gaze: {gaze_x},{gaze_y}, {gaze_z}"
+            #print(gaze_info)
+
+            """
+            if args.show_window:
+                frame_with_info = self.draw_info(painted_frame, gaze_info)
+                cv2.imshow(MAIN_DISPLAY, frame_with_info)
+                key_pressed = cv2.waitKey(30)
+                if key_pressed == 27 or key_pressed == 113: #Esc or q
+                    break #exit the for frame in ifeed loop
+            """
+            direction = "Move to"
+            if gaze_x > 0:
+                direction += " Left"
+            elif gaze_x < 0:
+                direction += " Right"
+            else:
+                direction += " Stay(Horiz)"
+
+            if gaze_y > 0:
+                direction += " Up"
+            elif gaze_y < 0:
+                direction += " Down"
+            else:
+                direction += " Stay(Vert)"
+
+            if gaze_z > 0:
+                direction += " Diagonal1"
+            elif gaze_y < 0:
+                direction += " Diagonal2"
+            else:
+                direction += " Stay(Diagonal)"
+
+            print(direction)
+
+            mouse.move(gaze_x, gaze_y)
+
 
     def get_face_coords(self, model, frame):
         image = model.preprocess_input(frame)
