@@ -18,7 +18,6 @@ class GazeEstimationModel(ModelBase):
         prep_left = super().preprocess_input(left_eye, required_size=None, input_name="left_eye_image")
         prep_right = super().preprocess_input(right_eye, required_size=None, input_name="right_eye_image")
         prep_head_pose = np.array([head_pose])
-        print("=================== pose", prep_head_pose.shape)
         return (prep_left, prep_right, prep_head_pose)
 
     def predict(self, left_eye, right_eye, head_pose, sync=False, request_id=0):
@@ -38,3 +37,6 @@ class GazeEstimationModel(ModelBase):
             self.infer_async(input_blob, request_id)
             if self.wait(request_id) == 0:
                 return self.get_output(request_id)
+
+    def preprocess_output(self, outputs):
+        return outputs.flatten()
