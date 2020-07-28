@@ -71,7 +71,8 @@ class ModelBase:
         input_blob = {self.input_name: image}
 
         if sync:
-            return self.infer_sync(input_blob) #return output blob
+            out = self.infer_sync(input_blob)
+            return out[self.output_name]        #normally returns a dict
         else:
             self.infer_async(input_blob, request_id)
             if self.wait(request_id) == 0:
