@@ -63,6 +63,14 @@ You can run in CPU, GPU, VPU (for example, Neural Compute Stick 2 or NCS2. Devic
 
 
 ## Benchmarks
+### Testing with other hardwares
+As I have only a 3rd gen i7 (OpenVINO officially supports only 6th to 10th gen Intel Processors), I had to use CPU extensions in order to be able to run the system in my CPU.
+Trying to run the software in GPU, gives me an error: `clGetPlatformIDs error -1001`
+Trying to run in NCS2 (MYRIAD) gives me `unsupported layer type "Quantize"`
+Trying to run in `HETERO:MYRIAD,CPU` or `HETERO:GPU,CPU`, gives me an error because I need to apply the CPU extension but HETERO cannot accept the extension.
+
+So, for now, I can only test in CPU with extensions, until I get a newer hardware.
+
 *TODO:* Include the benchmark results of running your model on multiple hardwares and multiple model precisions. Your benchmarks can include: model loading time, input/output processing time, model inference time etc.
 
 ## Results
