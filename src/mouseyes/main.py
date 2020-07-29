@@ -66,14 +66,14 @@ class MousEyes:
         parser.add_argument("-pt", "--prob_threshold", type=float, default=DEFAULT_CONFIDENCE,
                             help="Probability threshold for detections filtering"
                             "(0.5 by default)")
-        parser.add_argument("-o", "--output_video", type=str, default="out.mp4",
-                            help="Name of the output video")
-        parser.add_argument("-f", "--disable_video_file", required=False, action="store_true",
-                            help="Disable the output video file creation")
+        #parser.add_argument("-o", "--output_video", type=str, default="out.mp4",
+        #                    help="Name of the output video")
+        #parser.add_argument("-f", "--disable_video_file", required=False, action="store_true",
+        #                    help="Disable the output video file creation")
         parser.add_argument("-w", "--hide_window", required=False, action="store_true",
                             help="Hide the Window with the processed output of the image or video")
-        parser.add_argument("-k", "--skip_frames", type=int, default=0,
-                            help="Skip # of frames on the start of the video.")
+        #parser.add_argument("-k", "--skip_frames", type=int, default=0,
+        #                    help="Skip # of frames on the start of the video.")
         parser.add_argument("-L", "--logfile", type=str, default=DEFAULT_LOGFILE,
                             help="Path to the file to write the log")
         parser.add_argument("-ll", "--loglevel", type=str, default=DEFAULT_LOGLEVEL,
