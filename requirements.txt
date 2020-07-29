@@ -7,6 +7,6 @@ requests==2.22.0
 virtualenv==16.7.9
 
 #Additional requirements:
-pyautogui
-pytest
+PyAutoGUI>=0.9.50
+pytest>=5.4.3
 
