@@ -57,7 +57,7 @@ class ModelBase:
             if "unsupported layer" in str(e):
                 # OpenVINO throws a RuntimeException on unsupported layer,
                 # not an specific type of exception
-                self.log("Cannot run the model, unsupported layer: " + e, is_error=True)
+                self.log("Cannot run the model, unsupported layer: " + str(e), is_error=True)
                 self.log("You can try to pass a CPU Extension with the argument --cpu_extension", is_error=True)
             else:
                 self.log(e, is_error=True)
