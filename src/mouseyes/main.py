@@ -33,6 +33,7 @@ DEFAULT_LOGLEVEL="DEBUG"
 MAIN_DISPLAY="display"
 MOUSE_PRECISION="low"
 MOUSE_SPEED="fast"
+LOG_FORMAT = "[%(threadName)s, %(asctime)s, %(levelname)s]: %(message)s"
 
 class MousEyes:
 
@@ -138,6 +139,9 @@ class MousEyes:
         cv2.putText(frame, info, (100, 100), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255,0,0), thickness=2)
     
     def move_mouse(self):
+        """
+        Updates the mouse coords so that the mouse thread can move the mouse.
+        """
         while self.continue_thread:
             x, y = self.mouse_coords
 
@@ -146,26 +150,35 @@ class MousEyes:
             else:
                 self.mouse.move(x, y)
 
+    def print_init(self):
+        """
+        Logs a message to indicate a new run.
+        """
+        log.info("#####################")
+        log.info("##### WELCOME! ######")
+        log.info("#####################")
 
     def main(self):
-
+        
         #handle the command line arguments
         args = self.build_argparser().parse_args()
         self.sanitize_input(args)
 
         #initialize logging
-        log.basicConfig(filename=args.logfile, level=args.loglevel)
+        log.basicConfig(filename=args.logfile, level=args.loglevel, format=LOG_FORMAT)
+        self.print_init()
 
         #initialize the models
-        face_model = FaceDetectionModel(args.face_model, args.device, args.cpu_extension)
-        head_pose_model = HeadPoseEstimationModel(args.head_pose_model, args.device, args.cpu_extension)
-        landmark_model = FacialLandmarksModel(args.landmarks_model, args.device, args.cpu_extension)
-        gaze_model = GazeEstimationModel(args.gaze_model, args.device, args.cpu_extension)
-        self.mouse = MouseController(args.mouse_precision, args.mouse_speed)
+        face_model = FaceDetectionModel(args.face_model, args.device, args.cpu_extension, logger=log)
+        head_pose_model = HeadPoseEstimationModel(args.head_pose_model, args.device, args.cpu_extension, logger=log)
+        landmark_model = FacialLandmarksModel(args.landmarks_model, args.device, args.cpu_extension, logger=log)
+        gaze_model = GazeEstimationModel(args.gaze_model, args.device, args.cpu_extension, logger=log)
+        self.mouse = MouseController(args.mouse_precision, args.mouse_speed, logger=log)
 
         self.continue_thread = True
         self.mouse_coords = (None, None)
         t = threading.Thread(target=self.move_mouse)
+        t.name = "mouse-moving-thread"
         t.start()
 
         #open video and process the frames
@@ -192,7 +205,7 @@ class MousEyes:
             #get head angles
             head_angles = self.get_head_angles(head_pose_model, cropped_face)
             yaw, pitch, roll = head_angles
-            #print(f"pitch: {pitch}, roll: {roll}, yaw: {yaw}")
+            log.debug(f"Head angles: yaw: {yaw}, pitch: {pitch}, roll: {roll}")
             
             # get cropped eyes:
             eyes, landmarks = self.get_cropped_eyes(landmark_model, cropped_face)
@@ -221,8 +234,8 @@ class MousEyes:
             gaze_estimation = self.get_gaze_estimation(gaze_model, right_eye, left_eye, head_angles)
             gaze_x, gaze_y, gaze_z = gaze_estimation
 
-            gaze_info = f"Gaze: {gaze_x},{gaze_y}, {gaze_z}"
-            #print(gaze_info)
+            gaze_info = f"Gaze angles: {gaze_x},{gaze_y}, {gaze_z}"
+            log.debug(gaze_info)
 
             """
             if not args.hide_window:
@@ -233,7 +246,7 @@ class MousEyes:
                     break #exit the for frame in ifeed loop
             """
 
-            #self.mouse.move(gaze_x, gaze_y)
+            #self.mouse.move(gaze_x, gaze_y)  #if in the same thread, everything waits until the mouse move is finished
             self.mouse_coords = (gaze_x, gaze_y)        #the separated thread will update the mouse pointer
 
         self.continue_thread = False

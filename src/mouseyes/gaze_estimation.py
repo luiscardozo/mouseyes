@@ -11,9 +11,6 @@ class GazeEstimationModel(ModelBase):
     # Outputs:
     #   "gaze_vector": [1, 3]: Cartesian coordinates of gaze direction vector
 
-    def __init__(self, model_path, device='CPU', extensions=None, transpose=(2,0,1)):
-        super().__init__(model_path, device=device, extensions=extensions, transpose=transpose)
-
     def preprocess_input(self, left_eye, right_eye, head_pose):
         prep_left = super().preprocess_input(left_eye, required_size=None, input_name="left_eye_image")
         prep_right = super().preprocess_input(right_eye, required_size=None, input_name="right_eye_image")

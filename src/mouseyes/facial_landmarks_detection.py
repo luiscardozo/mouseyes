@@ -11,9 +11,6 @@ class FacialLandmarksModel(ModelBase):
     # 
     # From the eye positions, extract and return the images for left and right eyes
     
-    def __init__(self, model_path, device='CPU', extensions=None, transpose=(2,0,1)):
-        super().__init__(model_path, device=device, extensions=extensions, transpose=transpose)
-    
     def predict(self, image, sync=False, request_id=0):
         out = super().predict(image, sync=sync, request_id=request_id)
         #x1, y1, x2, y2, x3, y3, x4, y4, x5, y5 = out[0]

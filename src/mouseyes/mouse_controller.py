@@ -11,16 +11,17 @@ import pyautogui
 import time
 
 class MouseController:
-    def __init__(self, precision, speed):
+    def __init__(self, precision, speed, logger):
         precision_dict={'high':100, 'low':1000, 'medium':500}
         speed_dict={'fast':1, 'slow':10, 'medium':5}
         self.screenWidth, self.screenHeight = pyautogui.size()
 
         self.precision=precision_dict[precision]
         self.speed=speed_dict[speed]
+        self.logger = logger
 
     def move(self, x, y):
-        print("moving to {}, {}".format(x, y))
+        self.logger.debug("moving to {}, {}".format(x, y))
         pyautogui.moveRel(x*self.precision, -1*y*self.precision, duration=self.speed)
 
     def check_boundaries(self, axis, limit):

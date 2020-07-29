@@ -3,7 +3,6 @@ This is a sample class for a model. You may choose to use it as-is or make any c
 This has been provided just to give you an idea of how to structure your model class.
 '''
 import os
-import logging as log
 import sys
 import cv2
 import numpy as np
@@ -15,7 +14,7 @@ class ModelBase:
     '''
     Class for the Face Detection Model.
     '''
-    def __init__(self, model_path, device='CPU', extensions=None, transpose=(2,0,1)):
+    def __init__(self, model_path, device='CPU', extensions=None, transpose=(2,0,1), logger=None):
         '''
         Initialize the OpenVINO Engine
         '''
@@ -25,6 +24,7 @@ class ModelBase:
         self.device = device
         self.extensions = extensions
         self.transpose_form = transpose
+        self.logger = logger
         self.load_model()
 
     def load_model(self):
@@ -57,10 +57,10 @@ class ModelBase:
             if "unsupported layer" in str(e):
                 # OpenVINO throws a RuntimeException on unsupported layer,
                 # not an specific type of exception
-                print("Cannot run the model, unsupported layer: ", e, file=sys.stderr)
-                print("You can try to pass a CPU Extension with the argument --cpu_extension", file=sys.stderr)
+                self.log("Cannot run the model, unsupported layer: " + e, is_error=True)
+                self.log("You can try to pass a CPU Extension with the argument --cpu_extension", is_error=True)
             else:
-                print(e, file=sys.stderr)
+                self.log(e, is_error=True)
             raise UnsupportedLayersException()
 
 
@@ -92,12 +92,12 @@ class ModelBase:
 
         if not os.path.exists(model_xml):
             err_msg = "Model XML File does not exist in path " + os.path.abspath(model_xml)
-            log.error(err_msg)
+            self.log(err_msg, is_error=True)
             raise ModelXmlFileNotFoundException(err_msg)
         
         if not os.path.exists(model_bin):
             err_msg = "Model XML File does not exist on path " + model_bin
-            log.error(err_msg)
+            self.log(err_msg, is_error=True)
             raise ModelBinFileNotFoundException(err_msg)
 
         return model_xml, model_bin    
@@ -174,14 +174,29 @@ class ModelBase:
         unsupported = set()
         for layer, obj in net.layers.items():
             if not layer in supported_layers and obj.type != 'Input':
-                log.debug(f"Unsupported layer: {layer}, Type: {obj.type}")
+                self.log(f"Unsupported layer: {layer}, Type: {obj.type}", debug=True)
                 unsupported.add(obj.type)
 
         if len(unsupported) != 0:
-            print("There are unsupported layers in the current model.\n"
+            self.log("There are unsupported layers in the current model.\n"
                   "Try to load a CPU extension to solve this problem.\n"
                   "Layer types: " + str(unsupported) + "\n"
-                  "Cannot continue. Exiting.", file=sys.stderr)
+                  "Cannot continue. Exiting.", is_error=True)
             return True
 
         return False
+
+    def log(self, msg, is_error=False, debug=False):
+        if self.logger is not None:
+            if is_error:
+                self.logger.error(msg)
+                print(msg, file=sys.stderr)
+            elif debug:
+                self.logger.debug(msg)
+            else:
+                self.logger.info(msg)
+        else:
+            if is_error:
+                print(msg, file=sys.stderr)
+            if debug:
+                print(msg)

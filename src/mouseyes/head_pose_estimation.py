@@ -15,9 +15,6 @@ class HeadPoseEstimationModel(ModelBase):
     #   "angle_y_fc": [1, 1]: yaw (in degrees).
     #   "angle_p_fc": [1, 1]: pitch (in degrees).
     #   "angle_r_fc": [1, 1]: roll (in degrees).
-    
-    def __init__(self, model_path, device='CPU', extensions=None, transpose=(2,0,1)):
-        super().__init__(model_path, device=device, extensions=extensions, transpose=transpose)
 
     def predict(self, image, sync=False, request_id=0):
         super().predict(image, sync, request_id)
