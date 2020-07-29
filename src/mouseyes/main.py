@@ -55,8 +55,8 @@ class MousEyes:
         parser.add_argument("-i", "--input", required=False, type=str, default=DEFAULT_INPUT,
                             help="Path to image or video file. 'cam' for WebCam")
         parser.add_argument("-l", "--cpu_extension", required=False, type=str,
-                            default=EXTENSION,
-                            help="MKLDNN (CPU)-targeted custom layers."
+                            default=None,
+                            help="Path to a CPU extension (MKLDNN CPU-targeted custom layers.) "
                                 "Absolute path to a shared library with the"
                                 "kernels impl.")
         parser.add_argument("-d", "--device", type=str, default=DEVICE,
@@ -107,6 +107,7 @@ class MousEyes:
 
         if args.dev:
             args.hide_window = False
+            args.cpu_extension = EXTENSION
             #and others in the future
 
     def draw_masks(self, frame, coords):
