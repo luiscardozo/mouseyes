@@ -28,6 +28,8 @@ Supposing you already have OpenVINO installed with all it's dependencies, run th
 Create the virtual environment and install project dependencies.
 ```
 virtualenv env
+#add OpenVINO initialization to environment initialization
+echo "source /opt/intel/openvino/bin/setupvars.sh" >> env/bin/activate
 source env/bin/activate
 pip install -r requirements.txt
 ```
@@ -37,6 +39,8 @@ Intall the package in editable mode (required for pytest)
 python3 setup.py install
 pip install -e .
 ```
+The installation and configuration only needs to be done once.
+The next commands need to be inside the virtual environment. If you got off of the virtual environment (via the `deactivate` command or by closing the terminal), you can gain access to the virtual environment with `source env/bin/activate` (inside mouseyes directory).
 
 ### Test the code
 ```
