@@ -67,6 +67,10 @@ class InputFeeder:
     def __len__(self):
         return 1 if self.input_type == 'image' else self._total_frames
 
+    def close(self):
+        if self._cap.isOpened():
+            self._close_cap()
+
     def _close_cap(self):
         self._cap.release()
         cv2.destroyAllWindows()
