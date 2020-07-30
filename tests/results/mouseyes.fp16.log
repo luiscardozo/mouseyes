@@ -1,0 +1,789 @@
+[MainThread, 2020-07-30 09:43:10,780, INFO]: #####################
+[MainThread, 2020-07-30 09:43:10,780, INFO]: ##### WELCOME! ######
+[MainThread, 2020-07-30 09:43:10,780, INFO]: #####################
+[MainThread, 2020-07-30 09:43:10,813, INFO]: **************** Time to create IENetwork (face-detection-adas-0001): 0.00999499099998502
+[MainThread, 2020-07-30 09:43:11,024, INFO]: **************** Time to load the model (face-detection-adas-0001): 0.21097753099820693
+[MainThread, 2020-07-30 09:43:11,029, INFO]: **************** Time to create IENetwork (head-pose-estimation-adas-0001): 0.003389970999705838
+[MainThread, 2020-07-30 09:43:11,105, INFO]: **************** Time to load the model (head-pose-estimation-adas-0001): 0.0755534269992495
+[MainThread, 2020-07-30 09:43:11,108, INFO]: **************** Time to create IENetwork (landmarks-regression-retail-0009): 0.001296907001233194
+[MainThread, 2020-07-30 09:43:11,149, INFO]: **************** Time to load the model (landmarks-regression-retail-0009): 0.04149645299912663
+[MainThread, 2020-07-30 09:43:11,155, INFO]: **************** Time to create IENetwork (gaze-estimation-adas-0002): 0.0037651050006388687
+[MainThread, 2020-07-30 09:43:11,239, INFO]: **************** Time to load the model (gaze-estimation-adas-0002): 0.08380737300103647
+[MainThread, 2020-07-30 09:43:13,093, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.006157077001262223
+[MainThread, 2020-07-30 09:43:13,174, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.07477242700042552
+[MainThread, 2020-07-30 09:43:13,318, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:13,329, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.005253698000160512
+[MainThread, 2020-07-30 09:43:13,338, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.0037416550003399607
+[MainThread, 2020-07-30 09:43:13,349, DEBUG]: Head angles: yaw: 7.265020370483398, pitch: -10.044612884521484, roll: -1.4197413921356201
+[MainThread, 2020-07-30 09:43:13,365, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.010305767998943338
+[MainThread, 2020-07-30 09:43:13,376, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0064953279979818035
+[MainThread, 2020-07-30 09:43:13,417, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.005257546999928309
+[MainThread, 2020-07-30 09:43:13,428, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.0052517520016408525
+[MainThread, 2020-07-30 09:43:13,438, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.009462690002692398
+[MainThread, 2020-07-30 09:43:13,443, DEBUG]: Gaze angles: 0.29461222887039185,-0.31929394602775574, -0.8836447596549988
+[mouse-moving-thread, 2020-07-30 09:43:13,449, DEBUG]: moving mouse to 294, 166
+[MainThread, 2020-07-30 09:43:13,451, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0013245419977465644
+[MainThread, 2020-07-30 09:43:13,514, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06287538799733738
+[MainThread, 2020-07-30 09:43:13,548, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:13,548, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.0002101399986713659
+[MainThread, 2020-07-30 09:43:13,554, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.00516654500097502
+[MainThread, 2020-07-30 09:43:13,554, DEBUG]: Head angles: yaw: 2.448547840118408, pitch: -10.840559005737305, roll: -1.2174924612045288
+[MainThread, 2020-07-30 09:43:13,554, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00014550799824064597
+[MainThread, 2020-07-30 09:43:13,556, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0011412200001359452
+[MainThread, 2020-07-30 09:43:13,586, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00015535100101260468
+[MainThread, 2020-07-30 09:43:13,586, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 6.519500311696902e-05
+[MainThread, 2020-07-30 09:43:13,594, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.007445450002705911
+[MainThread, 2020-07-30 09:43:13,594, DEBUG]: Gaze angles: 0.2908707559108734,-0.2670178711414337, -0.9005761742591858
+[MainThread, 2020-07-30 09:43:13,597, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.001833088001149008
+[MainThread, 2020-07-30 09:43:13,661, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06372844999714289
+[MainThread, 2020-07-30 09:43:13,694, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:13,695, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.0002507270000933204
+[MainThread, 2020-07-30 09:43:13,699, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.0038451710024673957
+[MainThread, 2020-07-30 09:43:13,700, DEBUG]: Head angles: yaw: 4.0472211837768555, pitch: -15.260359764099121, roll: -1.1437125205993652
+[MainThread, 2020-07-30 09:43:13,700, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00013392999971983954
+[MainThread, 2020-07-30 09:43:13,702, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0014916239997546654
+[MainThread, 2020-07-30 09:43:13,732, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00021637700046994723
+[MainThread, 2020-07-30 09:43:13,733, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00011025499770767055
+[MainThread, 2020-07-30 09:43:13,740, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.007321027002035407
+[MainThread, 2020-07-30 09:43:13,741, DEBUG]: Gaze angles: 0.30966514348983765,-0.27507564425468445, -0.8981657028198242
+[MainThread, 2020-07-30 09:43:13,744, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0021498919995792676
+[MainThread, 2020-07-30 09:43:13,808, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06374916400091024
+[MainThread, 2020-07-30 09:43:13,841, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:13,841, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00024385500000789762
+[MainThread, 2020-07-30 09:43:13,846, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.0040614930003357586
+[MainThread, 2020-07-30 09:43:13,846, DEBUG]: Head angles: yaw: -0.5558007955551147, pitch: -13.212183952331543, roll: -1.453437328338623
+[MainThread, 2020-07-30 09:43:13,847, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.0001677349973761011
+[MainThread, 2020-07-30 09:43:13,849, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0020635369983210694
+[MainThread, 2020-07-30 09:43:13,880, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00019870300093316473
+[MainThread, 2020-07-30 09:43:13,880, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 8.489199899486266e-05
+[MainThread, 2020-07-30 09:43:13,888, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.007953796000947477
+[MainThread, 2020-07-30 09:43:13,889, DEBUG]: Gaze angles: 0.30820992588996887,-0.2470979243516922, -0.8987891674041748
+[MainThread, 2020-07-30 09:43:13,891, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0012376190024951939
+[MainThread, 2020-07-30 09:43:13,955, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06444477599870879
+[MainThread, 2020-07-30 09:43:13,988, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:13,989, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.0002781589973892551
+[MainThread, 2020-07-30 09:43:13,995, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.005907399998250185
+[MainThread, 2020-07-30 09:43:13,996, DEBUG]: Head angles: yaw: 1.3610800504684448, pitch: -13.2078857421875, roll: -2.2334952354431152
+[MainThread, 2020-07-30 09:43:13,997, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00020586000027833506
+[MainThread, 2020-07-30 09:43:13,999, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0016678649990353733
+[MainThread, 2020-07-30 09:43:14,030, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.0002407749998383224
+[MainThread, 2020-07-30 09:43:14,030, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00017174500317196362
+[MainThread, 2020-07-30 09:43:14,038, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.008002817998203682
+[MainThread, 2020-07-30 09:43:14,039, DEBUG]: Gaze angles: 0.3337528705596924,-0.25290077924728394, -0.8953842520713806
+[MainThread, 2020-07-30 09:43:14,041, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.001517797998531023
+[MainThread, 2020-07-30 09:43:14,108, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06667279900284484
+[MainThread, 2020-07-30 09:43:14,142, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:14,142, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00023674799740547314
+[MainThread, 2020-07-30 09:43:14,149, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.006196048998390324
+[MainThread, 2020-07-30 09:43:14,150, DEBUG]: Head angles: yaw: -1.0339767932891846, pitch: -14.159253120422363, roll: -2.3286643028259277
+[MainThread, 2020-07-30 09:43:14,150, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00021371899856603704
+[MainThread, 2020-07-30 09:43:14,152, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0013765040021098685
+[MainThread, 2020-07-30 09:43:14,183, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00020243799735908397
+[MainThread, 2020-07-30 09:43:14,183, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.0001558520016260445
+[MainThread, 2020-07-30 09:43:14,191, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.007338344999880064
+[MainThread, 2020-07-30 09:43:14,191, DEBUG]: Gaze angles: 0.1770840585231781,-0.18515226244926453, -0.9460092782974243
+[MainThread, 2020-07-30 09:43:14,195, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.002359745998546714
+[MainThread, 2020-07-30 09:43:14,260, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06438714999967488
+[MainThread, 2020-07-30 09:43:14,293, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:14,294, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00024962799943750724
+[MainThread, 2020-07-30 09:43:14,299, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.005434570000943495
+[MainThread, 2020-07-30 09:43:14,300, DEBUG]: Head angles: yaw: -4.60577392578125, pitch: -5.030374526977539, roll: -1.8102420568466187
+[MainThread, 2020-07-30 09:43:14,300, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 8.868599979905412e-05
+[MainThread, 2020-07-30 09:43:14,301, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.000949737001064932
+[MainThread, 2020-07-30 09:43:14,331, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.0001867460014182143
+[MainThread, 2020-07-30 09:43:14,332, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 9.928800136549398e-05
+[MainThread, 2020-07-30 09:43:14,339, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.007325229998969007
+[MainThread, 2020-07-30 09:43:14,340, DEBUG]: Gaze angles: 0.15517441928386688,-0.25786590576171875, -0.9321843385696411
+[MainThread, 2020-07-30 09:43:14,343, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0013502350011549424
+[MainThread, 2020-07-30 09:43:14,407, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06419778700001189
+[MainThread, 2020-07-30 09:43:14,441, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:14,441, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00023414099996443838
+[MainThread, 2020-07-30 09:43:14,445, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.0036419989992282353
+[MainThread, 2020-07-30 09:43:14,446, DEBUG]: Head angles: yaw: -4.009609222412109, pitch: -7.526631832122803, roll: -0.6511857509613037
+[MainThread, 2020-07-30 09:43:14,446, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.0001772010000422597
+[MainThread, 2020-07-30 09:43:14,448, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0014891480022924952
+[MainThread, 2020-07-30 09:43:14,479, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.000194271000509616
+[MainThread, 2020-07-30 09:43:14,479, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00011153399827890098
+[MainThread, 2020-07-30 09:43:14,487, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.00708975400266354
+[MainThread, 2020-07-30 09:43:14,487, DEBUG]: Gaze angles: 0.24193128943443298,-0.17502889037132263, -0.9279586672782898
+[MainThread, 2020-07-30 09:43:14,490, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0016726300018490292
+[MainThread, 2020-07-30 09:43:14,554, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06367651400069008
+[MainThread, 2020-07-30 09:43:14,586, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:14,587, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00022198700025910512
+[MainThread, 2020-07-30 09:43:14,591, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.003763106000405969
+[MainThread, 2020-07-30 09:43:14,591, DEBUG]: Head angles: yaw: -1.526390790939331, pitch: -0.9663617610931396, roll: -0.5241670608520508
+[MainThread, 2020-07-30 09:43:14,592, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00015524699847446755
+[MainThread, 2020-07-30 09:43:14,593, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.00140374400143628
+[MainThread, 2020-07-30 09:43:14,624, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.0002281439992657397
+[MainThread, 2020-07-30 09:43:14,625, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00011721899863914587
+[MainThread, 2020-07-30 09:43:14,631, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.006422841001040069
+[MainThread, 2020-07-30 09:43:14,632, DEBUG]: Gaze angles: 0.31486639380455017,-0.1677989512681961, -0.905655026435852
+[MainThread, 2020-07-30 09:43:14,635, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0022827789980510715
+[MainThread, 2020-07-30 09:43:14,701, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06623902200226439
+[MainThread, 2020-07-30 09:43:14,734, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:14,735, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00022161699962452985
+[MainThread, 2020-07-30 09:43:14,739, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.0038889149982423987
+[MainThread, 2020-07-30 09:43:14,740, DEBUG]: Head angles: yaw: -0.9146133661270142, pitch: -1.724327564239502, roll: -1.2991619110107422
+[MainThread, 2020-07-30 09:43:14,740, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00016915100059122778
+[MainThread, 2020-07-30 09:43:14,742, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0014119049992586952
+[MainThread, 2020-07-30 09:43:14,773, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00019010500182048418
+[MainThread, 2020-07-30 09:43:14,773, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00011631699817371555
+[MainThread, 2020-07-30 09:43:14,780, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.0065799730000435375
+[MainThread, 2020-07-30 09:43:14,780, DEBUG]: Gaze angles: 0.25050538778305054,-0.09394524246454239, -0.9308954477310181
+[MainThread, 2020-07-30 09:43:14,783, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.002172671000153059
+[MainThread, 2020-07-30 09:43:14,847, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06375125200065668
+[MainThread, 2020-07-30 09:43:14,880, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:14,880, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00019244499708293006
+[MainThread, 2020-07-30 09:43:14,885, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.004942266998114064
+[MainThread, 2020-07-30 09:43:14,886, DEBUG]: Head angles: yaw: -4.219014644622803, pitch: -14.190937995910645, roll: -0.9120159149169922
+[MainThread, 2020-07-30 09:43:14,886, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00010973200187436305
+[MainThread, 2020-07-30 09:43:14,887, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0010451710004417691
+[MainThread, 2020-07-30 09:43:14,918, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00018234600065625273
+[MainThread, 2020-07-30 09:43:14,918, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00013531800141208805
+[MainThread, 2020-07-30 09:43:14,925, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.0061709120018349495
+[MainThread, 2020-07-30 09:43:14,925, DEBUG]: Gaze angles: 0.2968420684337616,-0.037454452365636826, -0.9279171228408813
+[MainThread, 2020-07-30 09:43:14,927, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.001455038000131026
+[MainThread, 2020-07-30 09:43:14,996, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06819256500239135
+[MainThread, 2020-07-30 09:43:15,028, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:15,029, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00032253600147669204
+[MainThread, 2020-07-30 09:43:15,033, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.0035411590033618268
+[MainThread, 2020-07-30 09:43:15,033, DEBUG]: Head angles: yaw: -7.688314437866211, pitch: -17.104122161865234, roll: -0.7724184989929199
+[MainThread, 2020-07-30 09:43:15,034, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 9.077700087800622e-05
+[MainThread, 2020-07-30 09:43:15,035, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0009071510030480567
+[MainThread, 2020-07-30 09:43:15,065, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00011539799743331969
+[MainThread, 2020-07-30 09:43:15,065, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 5.9562000387813896e-05
+[MainThread, 2020-07-30 09:43:15,069, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.003984524002589751
+[MainThread, 2020-07-30 09:43:15,070, DEBUG]: Gaze angles: 0.3624320924282074,0.02573733776807785, -0.9217473864555359
+[MainThread, 2020-07-30 09:43:15,071, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0009412479994352907
+[MainThread, 2020-07-30 09:43:15,136, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06446797899843659
+[mouse-moving-thread, 2020-07-30 09:43:15,137, DEBUG]: moving mouse to 362, -25
+[MainThread, 2020-07-30 09:43:15,168, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:15,168, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.0001222219980263617
+[MainThread, 2020-07-30 09:43:15,172, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.0032149319995369297
+[MainThread, 2020-07-30 09:43:15,172, DEBUG]: Head angles: yaw: -12.299224853515625, pitch: -17.49541664123535, roll: 1.4226512908935547
+[MainThread, 2020-07-30 09:43:15,172, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 9.097499787458219e-05
+[MainThread, 2020-07-30 09:43:15,173, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.000940886002354091
+[MainThread, 2020-07-30 09:43:15,204, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00011551899660844356
+[MainThread, 2020-07-30 09:43:15,204, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 4.9111000407719985e-05
+[MainThread, 2020-07-30 09:43:15,209, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.004952273000526475
+[MainThread, 2020-07-30 09:43:15,209, DEBUG]: Gaze angles: 0.20483845472335815,0.046773362904787064, -0.9581933617591858
+[MainThread, 2020-07-30 09:43:15,211, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0010771530032798182
+[MainThread, 2020-07-30 09:43:15,278, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06649711800127989
+[MainThread, 2020-07-30 09:43:15,311, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:15,311, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00012404499648255296
+[MainThread, 2020-07-30 09:43:15,315, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.004364176998933544
+[MainThread, 2020-07-30 09:43:15,316, DEBUG]: Head angles: yaw: -19.05837631225586, pitch: -21.026126861572266, roll: 0.4921376705169678
+[MainThread, 2020-07-30 09:43:15,316, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.0001656240019656252
+[MainThread, 2020-07-30 09:43:15,318, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0013202529989939649
+[MainThread, 2020-07-30 09:43:15,348, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00011425900083850138
+[MainThread, 2020-07-30 09:43:15,349, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 6.498099901364185e-05
+[MainThread, 2020-07-30 09:43:15,353, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.004270842000551056
+[MainThread, 2020-07-30 09:43:15,353, DEBUG]: Gaze angles: -0.16903065145015717,-0.23333406448364258, -0.933840274810791
+[MainThread, 2020-07-30 09:43:15,355, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.00097830599770532
+[MainThread, 2020-07-30 09:43:15,420, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06533696399856126
+[MainThread, 2020-07-30 09:43:15,453, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:15,454, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00012591099948622286
+[MainThread, 2020-07-30 09:43:15,457, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.003253855000366457
+[MainThread, 2020-07-30 09:43:15,458, DEBUG]: Head angles: yaw: -8.83298397064209, pitch: -31.208515167236328, roll: 0.8282108306884766
+[MainThread, 2020-07-30 09:43:15,458, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00012153499847045168
+[MainThread, 2020-07-30 09:43:15,459, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0016071469981397968
+[MainThread, 2020-07-30 09:43:15,490, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00011886700303875841
+[MainThread, 2020-07-30 09:43:15,490, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 4.850899858865887e-05
+[MainThread, 2020-07-30 09:43:15,495, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.004641266001272015
+[MainThread, 2020-07-30 09:43:15,495, DEBUG]: Gaze angles: 0.1898111253976822,-0.1787489950656891, -0.9487709999084473
+[MainThread, 2020-07-30 09:43:15,498, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0013016940029046964
+[MainThread, 2020-07-30 09:43:15,565, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06692850399849704
+[MainThread, 2020-07-30 09:43:15,599, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:15,600, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00038328200025716797
+[MainThread, 2020-07-30 09:43:15,605, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.004663740997784771
+[MainThread, 2020-07-30 09:43:15,605, DEBUG]: Head angles: yaw: -8.67386245727539, pitch: -30.752206802368164, roll: 2.697841167449951
+[MainThread, 2020-07-30 09:43:15,605, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00011182799789821729
+[MainThread, 2020-07-30 09:43:15,607, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0012733039984595962
+[MainThread, 2020-07-30 09:43:15,638, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00019406199862714857
+[MainThread, 2020-07-30 09:43:15,638, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00012401800267980434
+[MainThread, 2020-07-30 09:43:15,646, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.007035478000034345
+[MainThread, 2020-07-30 09:43:15,646, DEBUG]: Gaze angles: 0.12106968462467194,-0.1861748993396759, -0.9546438455581665
+[MainThread, 2020-07-30 09:43:15,649, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0021421070014184806
+[MainThread, 2020-07-30 09:43:15,713, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06435255800170125
+[MainThread, 2020-07-30 09:43:15,747, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:15,748, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00028399900111253373
+[MainThread, 2020-07-30 09:43:15,753, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.004911010000796523
+[MainThread, 2020-07-30 09:43:15,754, DEBUG]: Head angles: yaw: -0.5049581527709961, pitch: -25.652870178222656, roll: 0.6051158905029297
+[MainThread, 2020-07-30 09:43:15,755, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00023224599863169715
+[MainThread, 2020-07-30 09:43:15,756, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0016192850016523153
+[MainThread, 2020-07-30 09:43:15,787, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.0002215550011896994
+[MainThread, 2020-07-30 09:43:15,788, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.0001523749997431878
+[MainThread, 2020-07-30 09:43:15,798, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.009280414000386372
+[MainThread, 2020-07-30 09:43:15,798, DEBUG]: Gaze angles: 0.033582914620637894,0.023417694494128227, -0.9731332659721375
+[MainThread, 2020-07-30 09:43:15,800, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0012250069994479418
+[MainThread, 2020-07-30 09:43:15,864, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06373142099982942
+[MainThread, 2020-07-30 09:43:15,897, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:15,898, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00028495600054156967
+[MainThread, 2020-07-30 09:43:15,905, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.006276644999161363
+[MainThread, 2020-07-30 09:43:15,906, DEBUG]: Head angles: yaw: -2.3090310096740723, pitch: -19.463401794433594, roll: -0.05826568603515625
+[MainThread, 2020-07-30 09:43:15,906, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00021254999955999665
+[MainThread, 2020-07-30 09:43:15,908, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0019031510018976405
+[MainThread, 2020-07-30 09:43:15,939, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.0002502629977243487
+[MainThread, 2020-07-30 09:43:15,940, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00016698400213499554
+[MainThread, 2020-07-30 09:43:15,949, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.009542145999148488
+[MainThread, 2020-07-30 09:43:15,950, DEBUG]: Gaze angles: 0.13982176780700684,0.12154146283864975, -0.9468998908996582
+[MainThread, 2020-07-30 09:43:15,952, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0016586900019319728
+[MainThread, 2020-07-30 09:43:16,017, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06491278600151418
+[MainThread, 2020-07-30 09:43:16,051, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:16,051, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.0002243410017399583
+[MainThread, 2020-07-30 09:43:16,057, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.005255729000054998
+[MainThread, 2020-07-30 09:43:16,058, DEBUG]: Head angles: yaw: 0.011454641819000244, pitch: -22.653390884399414, roll: 1.4668292999267578
+[MainThread, 2020-07-30 09:43:16,058, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00017705799837131053
+[MainThread, 2020-07-30 09:43:16,060, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.001582234999659704
+[MainThread, 2020-07-30 09:43:16,091, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00020065699936822057
+[MainThread, 2020-07-30 09:43:16,091, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.0001159129969892092
+[MainThread, 2020-07-30 09:43:16,100, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.009123888998146867
+[MainThread, 2020-07-30 09:43:16,101, DEBUG]: Gaze angles: 0.2441091686487198,0.025468474254012108, -0.934922456741333
+[MainThread, 2020-07-30 09:43:16,104, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.002479508999385871
+[MainThread, 2020-07-30 09:43:16,167, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06228740599908633
+[MainThread, 2020-07-30 09:43:16,200, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:16,201, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00023737800074741244
+[MainThread, 2020-07-30 09:43:16,207, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.006429345998185454
+[MainThread, 2020-07-30 09:43:16,209, DEBUG]: Head angles: yaw: 0.0701913833618164, pitch: -17.424697875976562, roll: 1.24177885055542
+[MainThread, 2020-07-30 09:43:16,209, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.0001758760008669924
+[MainThread, 2020-07-30 09:43:16,210, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0013066309984424151
+[MainThread, 2020-07-30 09:43:16,241, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00018674799866857938
+[MainThread, 2020-07-30 09:43:16,242, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00010993200339726172
+[MainThread, 2020-07-30 09:43:16,250, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.007836948996555293
+[MainThread, 2020-07-30 09:43:16,250, DEBUG]: Gaze angles: -0.009171342477202415,0.036285798996686935, -0.9545753598213196
+[MainThread, 2020-07-30 09:43:16,253, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.002077544002531795
+[MainThread, 2020-07-30 09:43:16,317, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06408877500143717
+[MainThread, 2020-07-30 09:43:16,351, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:16,351, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00022541799989994615
+[MainThread, 2020-07-30 09:43:16,356, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.004151320001255954
+[MainThread, 2020-07-30 09:43:16,357, DEBUG]: Head angles: yaw: -2.8422489166259766, pitch: -27.455368041992188, roll: -1.8871893882751465
+[MainThread, 2020-07-30 09:43:16,357, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.0002566170005593449
+[MainThread, 2020-07-30 09:43:16,359, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0014177160010149237
+[MainThread, 2020-07-30 09:43:16,390, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00020487900110310875
+[MainThread, 2020-07-30 09:43:16,390, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00015863600128795952
+[MainThread, 2020-07-30 09:43:16,400, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.0089030660019489
+[MainThread, 2020-07-30 09:43:16,400, DEBUG]: Gaze angles: -0.00805417075753212,0.03133835271000862, -0.9623717069625854
+[MainThread, 2020-07-30 09:43:16,402, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0015063159989949781
+[MainThread, 2020-07-30 09:43:16,465, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06260442699931446
+[MainThread, 2020-07-30 09:43:16,498, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:16,499, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.0002866890026780311
+[MainThread, 2020-07-30 09:43:16,503, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.0039061979987309314
+[MainThread, 2020-07-30 09:43:16,504, DEBUG]: Head angles: yaw: -9.288273811340332, pitch: -21.533557891845703, roll: -0.7634830474853516
+[MainThread, 2020-07-30 09:43:16,504, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00022481999985757284
+[MainThread, 2020-07-30 09:43:16,506, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.001453773002140224
+[MainThread, 2020-07-30 09:43:16,537, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.0002103970000462141
+[MainThread, 2020-07-30 09:43:16,537, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00011571199866011739
+[MainThread, 2020-07-30 09:43:16,546, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.007860926001740154
+[MainThread, 2020-07-30 09:43:16,546, DEBUG]: Gaze angles: -0.05808238685131073,0.03131444752216339, -0.9851325750350952
+[MainThread, 2020-07-30 09:43:16,549, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0019157809983880725
+[MainThread, 2020-07-30 09:43:16,612, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.0625302099979308
+[MainThread, 2020-07-30 09:43:16,645, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:16,645, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.0002665719985088799
+[MainThread, 2020-07-30 09:43:16,649, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.003749886000150582
+[MainThread, 2020-07-30 09:43:16,650, DEBUG]: Head angles: yaw: -2.465287446975708, pitch: -12.181477546691895, roll: 1.0775361061096191
+[MainThread, 2020-07-30 09:43:16,651, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.000117630999739049
+[MainThread, 2020-07-30 09:43:16,652, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0015150930012168828
+[MainThread, 2020-07-30 09:43:16,683, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.0002026289985224139
+[MainThread, 2020-07-30 09:43:16,684, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00011811500007752329
+[MainThread, 2020-07-30 09:43:16,690, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.006638482002017554
+[MainThread, 2020-07-30 09:43:16,691, DEBUG]: Gaze angles: -0.023004574701189995,0.004151584580540657, -0.9790897965431213
+[MainThread, 2020-07-30 09:43:16,693, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0013032620008743834
+[MainThread, 2020-07-30 09:43:16,756, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06269470200277283
+[mouse-moving-thread, 2020-07-30 09:43:16,765, DEBUG]: moving mouse to -23, -4
+[MainThread, 2020-07-30 09:43:16,788, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:16,789, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00022025100042810664
+[MainThread, 2020-07-30 09:43:16,794, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.0048150870024983305
+[MainThread, 2020-07-30 09:43:16,794, DEBUG]: Head angles: yaw: -3.4059462547302246, pitch: -31.645708084106445, roll: -1.2270441055297852
+[MainThread, 2020-07-30 09:43:16,795, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00016946999676292762
+[MainThread, 2020-07-30 09:43:16,797, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0017010390001814812
+[MainThread, 2020-07-30 09:43:16,827, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.0001956289997906424
+[MainThread, 2020-07-30 09:43:16,828, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00011550899944268167
+[MainThread, 2020-07-30 09:43:16,837, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.008642736000183504
+[MainThread, 2020-07-30 09:43:16,837, DEBUG]: Gaze angles: -0.0159809160977602,0.06890615075826645, -0.9786409139633179
+[MainThread, 2020-07-30 09:43:16,840, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0017768729994713794
+[MainThread, 2020-07-30 09:43:16,903, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06305298100051004
+[MainThread, 2020-07-30 09:43:16,937, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:16,937, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.0002464640019752551
+[MainThread, 2020-07-30 09:43:16,941, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.0035380180015636142
+[MainThread, 2020-07-30 09:43:16,942, DEBUG]: Head angles: yaw: -2.8022372722625732, pitch: -30.86524200439453, roll: -1.0791921615600586
+[MainThread, 2020-07-30 09:43:16,942, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00013923699953011237
+[MainThread, 2020-07-30 09:43:16,944, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0013945079990662634
+[MainThread, 2020-07-30 09:43:16,974, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00020531200061668642
+[MainThread, 2020-07-30 09:43:16,975, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00012347599840722978
+[MainThread, 2020-07-30 09:43:16,983, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.007627995000802912
+[MainThread, 2020-07-30 09:43:16,983, DEBUG]: Gaze angles: 0.08015919476747513,-0.0322016142308712, -0.9713912606239319
+[MainThread, 2020-07-30 09:43:16,986, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.00195697100207326
+[MainThread, 2020-07-30 09:43:17,052, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06569497099917498
+[MainThread, 2020-07-30 09:43:17,085, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:17,086, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.0002089829977194313
+[MainThread, 2020-07-30 09:43:17,089, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.0035910439983126707
+[MainThread, 2020-07-30 09:43:17,090, DEBUG]: Head angles: yaw: -4.919558525085449, pitch: -29.20279312133789, roll: -2.275749444961548
+[MainThread, 2020-07-30 09:43:17,091, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00017419299911125563
+[MainThread, 2020-07-30 09:43:17,092, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0013880580008844845
+[MainThread, 2020-07-30 09:43:17,123, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00020623100135708228
+[MainThread, 2020-07-30 09:43:17,123, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00012367399904178455
+[MainThread, 2020-07-30 09:43:17,131, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.007209139002952725
+[MainThread, 2020-07-30 09:43:17,131, DEBUG]: Gaze angles: 0.014437945559620857,-0.060386016964912415, -0.9757167100906372
+[MainThread, 2020-07-30 09:43:17,134, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.001277461000427138
+[MainThread, 2020-07-30 09:43:17,198, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06402678700032993
+[MainThread, 2020-07-30 09:43:17,231, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:17,231, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.0002351000002818182
+[MainThread, 2020-07-30 09:43:17,236, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.0042752490007842425
+[MainThread, 2020-07-30 09:43:17,237, DEBUG]: Head angles: yaw: -6.4014482498168945, pitch: -31.370166778564453, roll: -1.7789541482925415
+[MainThread, 2020-07-30 09:43:17,237, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00017824799942900427
+[MainThread, 2020-07-30 09:43:17,239, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0013430290018732194
+[MainThread, 2020-07-30 09:43:17,269, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00020248800137778744
+[MainThread, 2020-07-30 09:43:17,270, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00012364299982436933
+[MainThread, 2020-07-30 09:43:17,277, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.006765047997760121
+[MainThread, 2020-07-30 09:43:17,277, DEBUG]: Gaze angles: -0.13243719935417175,-0.015678884461522102, -0.9691073894500732
+[MainThread, 2020-07-30 09:43:17,280, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.002225067000836134
+[MainThread, 2020-07-30 09:43:17,349, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.0682565169990994
+[MainThread, 2020-07-30 09:43:17,382, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:17,383, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00023431400040863082
+[MainThread, 2020-07-30 09:43:17,391, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.005302554000081727
+[MainThread, 2020-07-30 09:43:17,392, DEBUG]: Head angles: yaw: -2.051687240600586, pitch: -38.582366943359375, roll: -0.45070552825927734
+[MainThread, 2020-07-30 09:43:17,392, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00011541700223460793
+[MainThread, 2020-07-30 09:43:17,393, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0013280470011522993
+[MainThread, 2020-07-30 09:43:17,424, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.0001993910009332467
+[MainThread, 2020-07-30 09:43:17,424, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.000123159999930067
+[MainThread, 2020-07-30 09:43:17,433, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.0081542529987928
+[MainThread, 2020-07-30 09:43:17,433, DEBUG]: Gaze angles: 0.20099659264087677,-0.14796048402786255, -0.9472663998603821
+[MainThread, 2020-07-30 09:43:17,436, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0022779430000809953
+[MainThread, 2020-07-30 09:43:17,500, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06292507400212344
+[MainThread, 2020-07-30 09:43:17,535, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.002079634999972768
+[MainThread, 2020-07-30 09:43:17,603, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.0671660609987157
+[MainThread, 2020-07-30 09:43:17,638, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.001927541998156812
+[MainThread, 2020-07-30 09:43:17,706, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06748606899782317
+[MainThread, 2020-07-30 09:43:17,739, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:17,739, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00026674900072976016
+[MainThread, 2020-07-30 09:43:17,744, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.0042349929972260725
+[MainThread, 2020-07-30 09:43:17,745, DEBUG]: Head angles: yaw: 34.978065490722656, pitch: -23.027477264404297, roll: 9.72441577911377
+[MainThread, 2020-07-30 09:43:17,746, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00022337100017466582
+[MainThread, 2020-07-30 09:43:17,747, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0014639239998359699
+[MainThread, 2020-07-30 09:43:17,778, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.0002051049996225629
+[MainThread, 2020-07-30 09:43:17,779, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00018344099953537807
+[MainThread, 2020-07-30 09:43:17,788, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.009250105002138298
+[MainThread, 2020-07-30 09:43:17,789, DEBUG]: Gaze angles: 0.08995876461267471,-0.13431812822818756, -0.9320319294929504
+[MainThread, 2020-07-30 09:43:17,791, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0012254460016265512
+[MainThread, 2020-07-30 09:43:17,854, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06301965099919471
+[MainThread, 2020-07-30 09:43:17,887, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:17,888, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00031493799906456843
+[MainThread, 2020-07-30 09:43:17,893, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.005007548999856226
+[MainThread, 2020-07-30 09:43:17,894, DEBUG]: Head angles: yaw: 32.552467346191406, pitch: -21.873798370361328, roll: 10.12546157836914
+[MainThread, 2020-07-30 09:43:17,895, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.0002289040021423716
+[MainThread, 2020-07-30 09:43:17,897, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0017117979987233412
+[MainThread, 2020-07-30 09:43:17,928, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.000189733000297565
+[MainThread, 2020-07-30 09:43:17,928, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00015757100118207745
+[MainThread, 2020-07-30 09:43:17,936, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.007265700001880759
+[MainThread, 2020-07-30 09:43:17,936, DEBUG]: Gaze angles: 0.20086358487606049,-0.10974268615245819, -0.9310738444328308
+[MainThread, 2020-07-30 09:43:17,940, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0021012500001234002
+[MainThread, 2020-07-30 09:43:18,004, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06417543399948045
+[MainThread, 2020-07-30 09:43:18,038, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:18,038, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.0003050360028282739
+[MainThread, 2020-07-30 09:43:18,043, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.004783586002304219
+[MainThread, 2020-07-30 09:43:18,045, DEBUG]: Head angles: yaw: 37.01762390136719, pitch: -19.510507583618164, roll: 13.660091400146484
+[MainThread, 2020-07-30 09:43:18,045, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00026948199956677854
+[MainThread, 2020-07-30 09:43:18,047, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0015155610017245635
+[MainThread, 2020-07-30 09:43:18,078, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00020049999875482172
+[MainThread, 2020-07-30 09:43:18,078, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00015519700173172168
+[MainThread, 2020-07-30 09:43:18,088, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.00915041400003247
+[MainThread, 2020-07-30 09:43:18,088, DEBUG]: Gaze angles: 0.40143105387687683,-0.1688910275697708, -0.8862051367759705
+[MainThread, 2020-07-30 09:43:18,091, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0016621729992039036
+[MainThread, 2020-07-30 09:43:18,154, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06319259500014596
+[MainThread, 2020-07-30 09:43:18,187, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:18,188, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00022801399973104708
+[MainThread, 2020-07-30 09:43:18,192, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.004280295001080958
+[MainThread, 2020-07-30 09:43:18,193, DEBUG]: Head angles: yaw: 30.14569664001465, pitch: -13.210663795471191, roll: 15.447032928466797
+[MainThread, 2020-07-30 09:43:18,193, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00019759900169447064
+[MainThread, 2020-07-30 09:43:18,195, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.001392237998516066
+[MainThread, 2020-07-30 09:43:18,226, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00021481899966602214
+[MainThread, 2020-07-30 09:43:18,226, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.000123464000353124
+[MainThread, 2020-07-30 09:43:18,234, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.007330965003347956
+[MainThread, 2020-07-30 09:43:18,234, DEBUG]: Gaze angles: 0.3314943313598633,-0.2244996577501297, -0.8796854615211487
+[MainThread, 2020-07-30 09:43:18,237, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.001872754997748416
+[MainThread, 2020-07-30 09:43:18,304, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06658017500012647
+[MainThread, 2020-07-30 09:43:18,337, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:18,337, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00029872700179112144
+[MainThread, 2020-07-30 09:43:18,341, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.0035191030001442414
+[MainThread, 2020-07-30 09:43:18,342, DEBUG]: Head angles: yaw: 31.898056030273438, pitch: -15.645648956298828, roll: 12.152557373046875
+[MainThread, 2020-07-30 09:43:18,342, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00015793599959579296
+[MainThread, 2020-07-30 09:43:18,344, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0017428099999960978
+[MainThread, 2020-07-30 09:43:18,375, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00018942100359709002
+[MainThread, 2020-07-30 09:43:18,376, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00010643099813023582
+[MainThread, 2020-07-30 09:43:18,383, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.007587968997540884
+[MainThread, 2020-07-30 09:43:18,384, DEBUG]: Gaze angles: 0.411029189825058,-0.24567684531211853, -0.8574420809745789
+[MainThread, 2020-07-30 09:43:18,386, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0016461999985040165
+[MainThread, 2020-07-30 09:43:18,450, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06362449799780734
+[mouse-moving-thread, 2020-07-30 09:43:18,457, DEBUG]: moving mouse to 125, 29
+[MainThread, 2020-07-30 09:43:18,483, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:18,484, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.0002492359999450855
+[MainThread, 2020-07-30 09:43:18,488, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.004233134997775778
+[MainThread, 2020-07-30 09:43:18,489, DEBUG]: Head angles: yaw: 33.05973434448242, pitch: -21.40143394470215, roll: 11.096811294555664
+[MainThread, 2020-07-30 09:43:18,489, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.0002138840027328115
+[MainThread, 2020-07-30 09:43:18,491, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0014791619978495874
+[MainThread, 2020-07-30 09:43:18,522, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00024541799939470366
+[MainThread, 2020-07-30 09:43:18,522, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00010936200123978779
+[MainThread, 2020-07-30 09:43:18,530, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.007800293002219405
+[MainThread, 2020-07-30 09:43:18,531, DEBUG]: Gaze angles: 0.380397230386734,-0.1901232898235321, -0.8933120965957642
+[MainThread, 2020-07-30 09:43:18,534, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0021125599996594246
+[MainThread, 2020-07-30 09:43:18,600, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06610211600127514
+[MainThread, 2020-07-30 09:43:18,634, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:18,634, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.0002190930026699789
+[MainThread, 2020-07-30 09:43:18,639, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.004773132000991609
+[MainThread, 2020-07-30 09:43:18,640, DEBUG]: Head angles: yaw: 37.7266731262207, pitch: -19.73602294921875, roll: 12.850475311279297
+[MainThread, 2020-07-30 09:43:18,640, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00018542600082582794
+[MainThread, 2020-07-30 09:43:18,642, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0014310650003608316
+[MainThread, 2020-07-30 09:43:18,673, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00018786800137604587
+[MainThread, 2020-07-30 09:43:18,673, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00010664899673429318
+[MainThread, 2020-07-30 09:43:18,682, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.008512567001162097
+[MainThread, 2020-07-30 09:43:18,682, DEBUG]: Gaze angles: 0.11175267398357391,-0.15522748231887817, -0.9556358456611633
+[MainThread, 2020-07-30 09:43:18,684, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0013151269995432813
+[MainThread, 2020-07-30 09:43:18,748, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06351700000232086
+[MainThread, 2020-07-30 09:43:18,781, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:18,782, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00026052700195577927
+[MainThread, 2020-07-30 09:43:18,786, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.0036678440010291524
+[MainThread, 2020-07-30 09:43:18,787, DEBUG]: Head angles: yaw: 29.72618865966797, pitch: -17.763874053955078, roll: 14.694375991821289
+[MainThread, 2020-07-30 09:43:18,787, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00023649899958400056
+[MainThread, 2020-07-30 09:43:18,789, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0014258139999583364
+[MainThread, 2020-07-30 09:43:18,820, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00018543899932410568
+[MainThread, 2020-07-30 09:43:18,820, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00015474099927814677
+[MainThread, 2020-07-30 09:43:18,829, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.008436053001787513
+[MainThread, 2020-07-30 09:43:18,830, DEBUG]: Gaze angles: 0.02968755178153515,-0.13514208793640137, -0.9710939526557922
+[MainThread, 2020-07-30 09:43:18,833, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.00226049200136913
+[MainThread, 2020-07-30 09:43:18,897, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06366595600047731
+[MainThread, 2020-07-30 09:43:18,930, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:18,931, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00024458500047330745
+[MainThread, 2020-07-30 09:43:18,936, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.0045661449985345826
+[MainThread, 2020-07-30 09:43:18,937, DEBUG]: Head angles: yaw: 27.524309158325195, pitch: -20.986358642578125, roll: 10.701982498168945
+[MainThread, 2020-07-30 09:43:18,937, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00017799800116335973
+[MainThread, 2020-07-30 09:43:18,939, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0013814869998896029
+[MainThread, 2020-07-30 09:43:18,970, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00021950299924355932
+[MainThread, 2020-07-30 09:43:18,970, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00010345799819333479
+[MainThread, 2020-07-30 09:43:18,977, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.006505973000457743
+[MainThread, 2020-07-30 09:43:18,977, DEBUG]: Gaze angles: 0.3415510058403015,-0.19231858849525452, -0.8827086687088013
+[MainThread, 2020-07-30 09:43:18,979, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0014350319979712367
+[MainThread, 2020-07-30 09:43:19,046, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06591049500275403
+[MainThread, 2020-07-30 09:43:19,078, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:19,079, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00017135499729192816
+[MainThread, 2020-07-30 09:43:19,084, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.005271321999316569
+[MainThread, 2020-07-30 09:43:19,085, DEBUG]: Head angles: yaw: 33.43801498413086, pitch: -18.58297348022461, roll: 11.962385177612305
+[MainThread, 2020-07-30 09:43:19,085, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00013505200331564993
+[MainThread, 2020-07-30 09:43:19,086, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0011931850021937862
+[MainThread, 2020-07-30 09:43:19,117, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00018641300266608596
+[MainThread, 2020-07-30 09:43:19,118, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 9.420300193596631e-05
+[MainThread, 2020-07-30 09:43:19,125, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.006836516000475967
+[MainThread, 2020-07-30 09:43:19,125, DEBUG]: Gaze angles: 0.29842349886894226,-0.171192467212677, -0.9029145240783691
+[MainThread, 2020-07-30 09:43:19,128, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0018765050008369144
+[MainThread, 2020-07-30 09:43:19,193, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.0651283789993613
+[MainThread, 2020-07-30 09:43:19,228, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0009700439986772835
+[MainThread, 2020-07-30 09:43:19,297, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06919055499747628
+[MainThread, 2020-07-30 09:43:19,331, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.001047657999151852
+[MainThread, 2020-07-30 09:43:19,397, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06558921599935275
+[MainThread, 2020-07-30 09:43:19,431, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0010614780003379565
+[MainThread, 2020-07-30 09:43:19,498, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06626585499907378
+[MainThread, 2020-07-30 09:43:19,534, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.001888256003439892
+[MainThread, 2020-07-30 09:43:19,604, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06991133800329408
+[MainThread, 2020-07-30 09:43:19,636, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:19,637, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.0002231819998996798
+[MainThread, 2020-07-30 09:43:19,643, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.006657283000095049
+[MainThread, 2020-07-30 09:43:19,644, DEBUG]: Head angles: yaw: -23.89171600341797, pitch: -18.834476470947266, roll: 0.3263266086578369
+[MainThread, 2020-07-30 09:43:19,645, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00019242700000177138
+[MainThread, 2020-07-30 09:43:19,648, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0025472399975114968
+[MainThread, 2020-07-30 09:43:19,678, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00019063799845753238
+[MainThread, 2020-07-30 09:43:19,679, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 7.788400034769438e-05
+[MainThread, 2020-07-30 09:43:19,686, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.006966048000322189
+[MainThread, 2020-07-30 09:43:19,686, DEBUG]: Gaze angles: -0.07590992003679276,-0.16949035227298737, -0.9756706953048706
+[MainThread, 2020-07-30 09:43:19,688, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0011655320013232995
+[MainThread, 2020-07-30 09:43:19,753, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06436072200085619
+[MainThread, 2020-07-30 09:43:19,786, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:19,786, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.0001947939999809023
+[MainThread, 2020-07-30 09:43:19,791, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.004972632999852067
+[MainThread, 2020-07-30 09:43:19,792, DEBUG]: Head angles: yaw: -29.99724006652832, pitch: -11.811971664428711, roll: 5.013118743896484
+[MainThread, 2020-07-30 09:43:19,792, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00015761499889777042
+[MainThread, 2020-07-30 09:43:19,794, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0013946070030215196
+[MainThread, 2020-07-30 09:43:19,825, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00018867800099542364
+[MainThread, 2020-07-30 09:43:19,825, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00011558799815247767
+[MainThread, 2020-07-30 09:43:19,833, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.008220638999773655
+[MainThread, 2020-07-30 09:43:19,834, DEBUG]: Gaze angles: 0.0749998465180397,-0.16217105090618134, -0.9864954948425293
+[MainThread, 2020-07-30 09:43:19,837, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0020847319974564016
+[MainThread, 2020-07-30 09:43:19,903, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.0659105240010831
+[MainThread, 2020-07-30 09:43:19,936, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:19,937, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.0002152519991795998
+[MainThread, 2020-07-30 09:43:19,941, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.003498101999866776
+[MainThread, 2020-07-30 09:43:19,941, DEBUG]: Head angles: yaw: -31.545318603515625, pitch: -21.42205047607422, roll: 3.125187873840332
+[MainThread, 2020-07-30 09:43:19,942, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.0001866509992396459
+[MainThread, 2020-07-30 09:43:19,943, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0014233459987735841
+[MainThread, 2020-07-30 09:43:19,974, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00019205799981136806
+[MainThread, 2020-07-30 09:43:19,975, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.0001167029986390844
+[MainThread, 2020-07-30 09:43:19,982, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.007128354998712894
+[MainThread, 2020-07-30 09:43:19,982, DEBUG]: Gaze angles: 0.15365609526634216,-0.06482229381799698, -0.9743595719337463
+[MainThread, 2020-07-30 09:43:19,986, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0019210309983463958
+[MainThread, 2020-07-30 09:43:20,049, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06271254500097712
+[MainThread, 2020-07-30 09:43:20,082, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:20,083, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00017326599845546298
+[MainThread, 2020-07-30 09:43:20,090, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.006791673000407172
+[MainThread, 2020-07-30 09:43:20,090, DEBUG]: Head angles: yaw: -24.036996841430664, pitch: -20.544527053833008, roll: 10.496467590332031
+[MainThread, 2020-07-30 09:43:20,091, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00015703200187999755
+[MainThread, 2020-07-30 09:43:20,093, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0019470860024739522
+[MainThread, 2020-07-30 09:43:20,124, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.0002005239985010121
+[MainThread, 2020-07-30 09:43:20,124, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00011001999882864766
+[MainThread, 2020-07-30 09:43:20,131, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.006946354998945026
+[MainThread, 2020-07-30 09:43:20,132, DEBUG]: Gaze angles: 0.147451713681221,-0.1521911919116974, -0.9750277996063232
+[MainThread, 2020-07-30 09:43:20,135, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.001770338996720966
+[MainThread, 2020-07-30 09:43:20,200, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06447504900279455
+[mouse-moving-thread, 2020-07-30 09:43:20,204, DEBUG]: moving mouse to 0, 0
+[MainThread, 2020-07-30 09:43:20,232, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:20,233, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00018939899746328592
+[MainThread, 2020-07-30 09:43:20,236, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.0036292269978730474
+[MainThread, 2020-07-30 09:43:20,237, DEBUG]: Head angles: yaw: -25.12249755859375, pitch: -22.67129898071289, roll: 8.737348556518555
+[MainThread, 2020-07-30 09:43:20,238, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00012599399997270666
+[MainThread, 2020-07-30 09:43:20,239, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0013934689995949157
+[MainThread, 2020-07-30 09:43:20,270, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.0002054860015050508
+[MainThread, 2020-07-30 09:43:20,270, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00010578900037216954
+[MainThread, 2020-07-30 09:43:20,278, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.007305814000574173
+[MainThread, 2020-07-30 09:43:20,278, DEBUG]: Gaze angles: 0.10626087337732315,-0.1053566187620163, -0.9394892454147339
+[MainThread, 2020-07-30 09:43:20,280, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0014220920020306949
+[MainThread, 2020-07-30 09:43:20,345, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06412752300093416
+[mouse-moving-thread, 2020-07-30 09:43:20,347, DEBUG]: moving mouse to 0, 0
+[MainThread, 2020-07-30 09:43:20,378, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:20,378, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.000221534999582218
+[MainThread, 2020-07-30 09:43:20,382, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.003655322001577588
+[MainThread, 2020-07-30 09:43:20,383, DEBUG]: Head angles: yaw: -25.61652374267578, pitch: -20.37891387939453, roll: 3.989412784576416
+[MainThread, 2020-07-30 09:43:20,383, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00015827000243007205
+[MainThread, 2020-07-30 09:43:20,385, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.001317804002610501
+[MainThread, 2020-07-30 09:43:20,415, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00017355300224153325
+[MainThread, 2020-07-30 09:43:20,416, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00011667400031001307
+[MainThread, 2020-07-30 09:43:20,423, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.007346958998823538
+[MainThread, 2020-07-30 09:43:20,424, DEBUG]: Gaze angles: -0.22208374738693237,-0.09761961549520493, -0.9173703193664551
+[MainThread, 2020-07-30 09:43:20,427, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.00216768999962369
+[MainThread, 2020-07-30 09:43:20,492, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.0648141099991335
+[mouse-moving-thread, 2020-07-30 09:43:20,492, DEBUG]: moving mouse to -222, 0
+[MainThread, 2020-07-30 09:43:20,525, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:20,526, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00023120100013329647
+[MainThread, 2020-07-30 09:43:20,530, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.0035437689984973986
+[MainThread, 2020-07-30 09:43:20,530, DEBUG]: Head angles: yaw: -35.98515701293945, pitch: -21.491411209106445, roll: 8.941167831420898
+[MainThread, 2020-07-30 09:43:20,531, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00020937099907314405
+[MainThread, 2020-07-30 09:43:20,532, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0014563099975930527
+[MainThread, 2020-07-30 09:43:20,536, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.002103389000694733
+[MainThread, 2020-07-30 09:43:20,599, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06267902200124809
+[MainThread, 2020-07-30 09:43:20,631, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:20,632, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00020774600125150755
+[MainThread, 2020-07-30 09:43:20,638, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.0058630150015233085
+[MainThread, 2020-07-30 09:43:20,639, DEBUG]: Head angles: yaw: -37.435691833496094, pitch: -17.841583251953125, roll: -0.9029641151428223
+[MainThread, 2020-07-30 09:43:20,639, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00017651799862505868
+[MainThread, 2020-07-30 09:43:20,641, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0015378040006908122
+[MainThread, 2020-07-30 09:43:20,672, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.0001669390003371518
+[MainThread, 2020-07-30 09:43:20,672, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 9.607000174582936e-05
+[MainThread, 2020-07-30 09:43:20,677, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.004838236000068719
+[MainThread, 2020-07-30 09:43:20,677, DEBUG]: Gaze angles: 0.016699589788913727,-0.029557105153799057, -0.9752297401428223
+[MainThread, 2020-07-30 09:43:20,679, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0010559860020293854
+[MainThread, 2020-07-30 09:43:20,744, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.0650987509980041
+[MainThread, 2020-07-30 09:43:20,778, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:20,778, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00021435899907373823
+[MainThread, 2020-07-30 09:43:20,783, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.004131914000026882
+[MainThread, 2020-07-30 09:43:20,784, DEBUG]: Head angles: yaw: -37.88129806518555, pitch: -17.97469139099121, roll: -3.542663097381592
+[MainThread, 2020-07-30 09:43:20,784, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00017256999853998423
+[MainThread, 2020-07-30 09:43:20,786, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0014400289983313996
+[MainThread, 2020-07-30 09:43:20,816, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00021019099949626252
+[MainThread, 2020-07-30 09:43:20,817, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.0001104949988075532
+[MainThread, 2020-07-30 09:43:20,825, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.008463845002552262
+[MainThread, 2020-07-30 09:43:20,826, DEBUG]: Gaze angles: 0.018988706171512604,-0.062156133353710175, -0.9761566519737244
+[MainThread, 2020-07-30 09:43:20,828, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0012492390014813282
+[MainThread, 2020-07-30 09:43:20,893, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06470160399840097
+[MainThread, 2020-07-30 09:43:20,926, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:20,926, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.0002107779982907232
+[MainThread, 2020-07-30 09:43:20,931, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.00460018699959619
+[MainThread, 2020-07-30 09:43:20,932, DEBUG]: Head angles: yaw: -40.918609619140625, pitch: -20.327138900756836, roll: -3.391613483428955
+[MainThread, 2020-07-30 09:43:20,932, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00014678200022899546
+[MainThread, 2020-07-30 09:43:20,934, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0013956990005681291
+[MainThread, 2020-07-30 09:43:20,964, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.0001948709978023544
+[MainThread, 2020-07-30 09:43:20,965, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00010598500011838041
+[MainThread, 2020-07-30 09:43:20,974, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.008789669998805039
+[MainThread, 2020-07-30 09:43:20,974, DEBUG]: Gaze angles: -0.07352162152528763,-0.031938619911670685, -0.9752166271209717
+[MainThread, 2020-07-30 09:43:20,978, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0020513249983196147
+[MainThread, 2020-07-30 09:43:21,042, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06415008100157138
+[MainThread, 2020-07-30 09:43:21,076, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:21,077, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.0002854589984053746
+[MainThread, 2020-07-30 09:43:21,081, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.00447139600146329
+[MainThread, 2020-07-30 09:43:21,082, DEBUG]: Head angles: yaw: -35.653404235839844, pitch: -20.41922950744629, roll: -0.7255244255065918
+[MainThread, 2020-07-30 09:43:21,082, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00013317200136953034
+[MainThread, 2020-07-30 09:43:21,084, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0013336519987205975
+[MainThread, 2020-07-30 09:43:21,115, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00020389900237205438
+[MainThread, 2020-07-30 09:43:21,115, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00011851999806822278
+[MainThread, 2020-07-30 09:43:21,123, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.007869375000154832
+[MainThread, 2020-07-30 09:43:21,123, DEBUG]: Gaze angles: -0.03142654150724411,0.008452141657471657, -0.9661547541618347
+[MainThread, 2020-07-30 09:43:21,126, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0016566810008953325
+[MainThread, 2020-07-30 09:43:21,189, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06241109099937603
+[MainThread, 2020-07-30 09:43:21,221, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:21,222, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.0001996950013563037
+[MainThread, 2020-07-30 09:43:21,226, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.004491173000133131
+[MainThread, 2020-07-30 09:43:21,227, DEBUG]: Head angles: yaw: -41.39717102050781, pitch: -18.988262176513672, roll: -4.501686096191406
+[MainThread, 2020-07-30 09:43:21,228, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.0001572539986227639
+[MainThread, 2020-07-30 09:43:21,229, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0014751109993085265
+[MainThread, 2020-07-30 09:43:21,260, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00015347199951065704
+[MainThread, 2020-07-30 09:43:21,260, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 7.842999912099913e-05
+[MainThread, 2020-07-30 09:43:21,268, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.007790157000272302
+[MainThread, 2020-07-30 09:43:21,269, DEBUG]: Gaze angles: -0.10829491913318634,-0.010874611325562, -0.9750338196754456
+[MainThread, 2020-07-30 09:43:21,271, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0017820319990278222
+[MainThread, 2020-07-30 09:43:21,336, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06428880200110143
+[MainThread, 2020-07-30 09:43:21,369, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:21,369, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.0002008359988394659
+[MainThread, 2020-07-30 09:43:21,374, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.004686665000917856
+[MainThread, 2020-07-30 09:43:21,375, DEBUG]: Head angles: yaw: -32.482635498046875, pitch: -19.763248443603516, roll: -6.252896785736084
+[MainThread, 2020-07-30 09:43:21,375, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00016739200145821087
+[MainThread, 2020-07-30 09:43:21,377, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0014951589982956648
+[MainThread, 2020-07-30 09:43:21,408, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00015976500071701594
+[MainThread, 2020-07-30 09:43:21,408, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 8.770199929131195e-05
+[MainThread, 2020-07-30 09:43:21,416, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.007562075999885565
+[MainThread, 2020-07-30 09:43:21,416, DEBUG]: Gaze angles: -0.010629039257764816,-0.022149935364723206, -0.9752680063247681
+[MainThread, 2020-07-30 09:43:21,419, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0017107539970311336
+[MainThread, 2020-07-30 09:43:21,483, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06399030500324443
+[MainThread, 2020-07-30 09:43:21,516, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:21,517, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00023655699988012202
+[MainThread, 2020-07-30 09:43:21,520, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.0034622759994817898
+[MainThread, 2020-07-30 09:43:21,521, DEBUG]: Head angles: yaw: -38.373104095458984, pitch: -17.499832153320312, roll: -3.3687164783477783
+[MainThread, 2020-07-30 09:43:21,521, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00022587000057683326
+[MainThread, 2020-07-30 09:43:21,523, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0013507719995686784
+[MainThread, 2020-07-30 09:43:21,554, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00020175100144115277
+[MainThread, 2020-07-30 09:43:21,554, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00012471800073399208
+[MainThread, 2020-07-30 09:43:21,563, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.008320680000906577
+[MainThread, 2020-07-30 09:43:21,563, DEBUG]: Gaze angles: -0.09743516892194748,-0.13070352375507355, -0.9575018882751465
+[MainThread, 2020-07-30 09:43:21,566, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0022343400014506187
+[MainThread, 2020-07-30 09:43:21,630, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.0632235840021167
+[MainThread, 2020-07-30 09:43:21,663, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:21,663, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00020940000104019418
+[MainThread, 2020-07-30 09:43:21,671, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.007847867000236874
+[MainThread, 2020-07-30 09:43:21,672, DEBUG]: Head angles: yaw: -34.162254333496094, pitch: -16.28289031982422, roll: -2.545321464538574
+[MainThread, 2020-07-30 09:43:21,673, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00011032299880753271
+[MainThread, 2020-07-30 09:43:21,674, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0012743430015689228
+[MainThread, 2020-07-30 09:43:21,705, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00017025900160660967
+[MainThread, 2020-07-30 09:43:21,705, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 8.913499914342538e-05
+[MainThread, 2020-07-30 09:43:21,713, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.00743704200067441
+[MainThread, 2020-07-30 09:43:21,713, DEBUG]: Gaze angles: -0.1367766112089157,-0.0068286871537566185, -0.9299052357673645
+[MainThread, 2020-07-30 09:43:21,722, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.008111815997835947
+[MainThread, 2020-07-30 09:43:21,784, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.061558277997392
+[MainThread, 2020-07-30 09:43:21,817, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:21,818, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00021098599972901866
+[MainThread, 2020-07-30 09:43:21,822, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.004621357002179138
+[MainThread, 2020-07-30 09:43:21,823, DEBUG]: Head angles: yaw: -30.164142608642578, pitch: -16.36993408203125, roll: 3.3996849060058594
+[MainThread, 2020-07-30 09:43:21,823, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.0001434559999324847
+[MainThread, 2020-07-30 09:43:21,825, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0013921739991928916
+[MainThread, 2020-07-30 09:43:21,856, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00022931800049263984
+[MainThread, 2020-07-30 09:43:21,856, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00011574699965422042
+[MainThread, 2020-07-30 09:43:21,866, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.009241076000762405
+[MainThread, 2020-07-30 09:43:21,866, DEBUG]: Gaze angles: -0.2146224081516266,-0.1203988641500473, -0.9501408934593201
+[MainThread, 2020-07-30 09:43:21,870, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.002473140997608425
+[MainThread, 2020-07-30 09:43:21,933, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.0626205549997394
+[MainThread, 2020-07-30 09:43:21,965, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:21,966, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00023422700178343803
+[MainThread, 2020-07-30 09:43:21,970, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.0036703900004795287
+[MainThread, 2020-07-30 09:43:21,971, DEBUG]: Head angles: yaw: -21.057743072509766, pitch: -16.492481231689453, roll: 17.180871963500977
+[MainThread, 2020-07-30 09:43:21,971, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00023757800227031112
+[MainThread, 2020-07-30 09:43:21,973, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0013735680004174355
+[MainThread, 2020-07-30 09:43:22,003, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00020733099881908856
+[MainThread, 2020-07-30 09:43:22,004, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00011529800030984916
+[MainThread, 2020-07-30 09:43:22,012, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.00768994000100065
+[MainThread, 2020-07-30 09:43:22,012, DEBUG]: Gaze angles: -0.21418456733226776,-0.1858309656381607, -0.91591477394104
+[MainThread, 2020-07-30 09:43:22,014, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0008328419971803669
+[MainThread, 2020-07-30 09:43:22,079, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.0643084479997924
+[MainThread, 2020-07-30 09:43:22,111, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:22,112, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00023487799990107305
+[MainThread, 2020-07-30 09:43:22,116, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.004245683998306049
+[MainThread, 2020-07-30 09:43:22,117, DEBUG]: Head angles: yaw: -11.466221809387207, pitch: -15.784158706665039, roll: 0.47992968559265137
+[MainThread, 2020-07-30 09:43:22,117, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.0002804379982990213
+[MainThread, 2020-07-30 09:43:22,119, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0013755079999100417
+[MainThread, 2020-07-30 09:43:22,150, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.0001788340014172718
+[MainThread, 2020-07-30 09:43:22,150, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.0001000299998850096
+[MainThread, 2020-07-30 09:43:22,157, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.006509647999337176
+[MainThread, 2020-07-30 09:43:22,157, DEBUG]: Gaze angles: 0.1534532755613327,-0.3102177381515503, -0.927492082118988
+[MainThread, 2020-07-30 09:43:22,160, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.002028476999839768
+[MainThread, 2020-07-30 09:43:22,224, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06411165800091112
+[mouse-moving-thread, 2020-07-30 09:43:22,226, DEBUG]: moving mouse to 153, 0
+[MainThread, 2020-07-30 09:43:22,257, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:22,258, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00022072600040701218
+[MainThread, 2020-07-30 09:43:22,262, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.0035127419978380203
+[MainThread, 2020-07-30 09:43:22,263, DEBUG]: Head angles: yaw: -4.728074073791504, pitch: -14.088943481445312, roll: -2.0148262977600098
+[MainThread, 2020-07-30 09:43:22,263, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00017254399790544994
+[MainThread, 2020-07-30 09:43:22,264, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0013693010005226824
+[MainThread, 2020-07-30 09:43:22,295, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.0003023549979843665
+[MainThread, 2020-07-30 09:43:22,296, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00013277499965624884
+[MainThread, 2020-07-30 09:43:22,301, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.005299624001054326
+[MainThread, 2020-07-30 09:43:22,301, DEBUG]: Gaze angles: 0.22826474905014038,-0.2007531225681305, -0.9390094876289368
+[MainThread, 2020-07-30 09:43:22,303, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0009541270010231528
+[MainThread, 2020-07-30 09:43:22,365, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06159969000145793
+[MainThread, 2020-07-30 09:43:22,397, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:22,398, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.000195415999769466
+[MainThread, 2020-07-30 09:43:22,405, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.0045745700008410495
+[MainThread, 2020-07-30 09:43:22,406, DEBUG]: Head angles: yaw: -3.6598639488220215, pitch: -17.266876220703125, roll: 0.14615225791931152
+[MainThread, 2020-07-30 09:43:22,406, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.0001745549998304341
+[MainThread, 2020-07-30 09:43:22,408, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0014398809980775695
+[MainThread, 2020-07-30 09:43:22,439, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.0002020049978455063
+[MainThread, 2020-07-30 09:43:22,439, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00015140200048335828
+[MainThread, 2020-07-30 09:43:22,447, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.007844551000744104
+[MainThread, 2020-07-30 09:43:22,448, DEBUG]: Gaze angles: 0.2266528457403183,-0.3678606450557709, -0.8966831564903259
+[MainThread, 2020-07-30 09:43:22,450, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0014672560027975123
+[MainThread, 2020-07-30 09:43:22,515, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.0647016020011506
+[MainThread, 2020-07-30 09:43:22,548, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:22,549, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.0002812890015775338
+[MainThread, 2020-07-30 09:43:22,554, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.004759792998811463
+[MainThread, 2020-07-30 09:43:22,555, DEBUG]: Head angles: yaw: -6.803900718688965, pitch: -12.339115142822266, roll: 1.8217153549194336
+[MainThread, 2020-07-30 09:43:22,556, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00022971199723542668
+[MainThread, 2020-07-30 09:43:22,557, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0014817789997323416
+[MainThread, 2020-07-30 09:43:22,588, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00020769199909409508
+[MainThread, 2020-07-30 09:43:22,589, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00016593899999861605
+[MainThread, 2020-07-30 09:43:22,596, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.007256323999172309
+[MainThread, 2020-07-30 09:43:22,597, DEBUG]: Gaze angles: 0.08808127790689468,-0.24195894598960876, -0.9573901891708374
+[MainThread, 2020-07-30 09:43:22,600, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.001971006000530906
+[MainThread, 2020-07-30 09:43:22,666, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06545145699783461
+[MainThread, 2020-07-30 09:43:22,700, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:22,701, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.000316328998451354
+[MainThread, 2020-07-30 09:43:22,706, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.005234124000708107
+[MainThread, 2020-07-30 09:43:22,707, DEBUG]: Head angles: yaw: -2.5123915672302246, pitch: -13.614554405212402, roll: -1.8965559005737305
+[MainThread, 2020-07-30 09:43:22,707, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00017631499940762296
+[MainThread, 2020-07-30 09:43:22,709, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0014776370007894002
+[MainThread, 2020-07-30 09:43:22,740, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00020063700139871798
+[MainThread, 2020-07-30 09:43:22,740, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00012484500257414766
+[MainThread, 2020-07-30 09:43:22,749, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.008134840001730481
+[MainThread, 2020-07-30 09:43:22,749, DEBUG]: Gaze angles: 0.16100284457206726,-0.21441058814525604, -0.9446913599967957
+[MainThread, 2020-07-30 09:43:22,752, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0022530739988724235
+[MainThread, 2020-07-30 09:43:22,815, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06283493999944767
+[MainThread, 2020-07-30 09:43:22,849, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:22,849, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00018293799803359434
+[MainThread, 2020-07-30 09:43:22,855, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.00608226099939202
+[MainThread, 2020-07-30 09:43:22,856, DEBUG]: Head angles: yaw: -2.025143623352051, pitch: -10.16138744354248, roll: -1.240657091140747
+[MainThread, 2020-07-30 09:43:22,856, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00013406200014287606
+[MainThread, 2020-07-30 09:43:22,858, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.0016887420024431776
+[MainThread, 2020-07-30 09:43:22,889, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00017281800319324248
+[MainThread, 2020-07-30 09:43:22,889, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 8.210200030589476e-05
+[MainThread, 2020-07-30 09:43:22,898, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.008425675998296356
+[MainThread, 2020-07-30 09:43:22,898, DEBUG]: Gaze angles: 0.23145440220832825,-0.16454069316387177, -0.9396359324455261
+[MainThread, 2020-07-30 09:43:22,900, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0016807130014058203
+[MainThread, 2020-07-30 09:43:22,965, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06449913399774232
+[MainThread, 2020-07-30 09:43:23,000, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.00158074899809435
+[MainThread, 2020-07-30 09:43:23,066, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.0657695469999453
+[MainThread, 2020-07-30 09:43:23,098, DEBUG]: Face Cropped
+[MainThread, 2020-07-30 09:43:23,099, INFO]: **************** Time to preprocess frame (head-pose-estimation-adas-0001): 0.00019305500245536678
+[MainThread, 2020-07-30 09:43:23,104, INFO]: **************** Time to infer model (sync) (head-pose-estimation-adas-0001): 0.00508131999959005
+[MainThread, 2020-07-30 09:43:23,105, DEBUG]: Head angles: yaw: -20.587535858154297, pitch: -9.13199234008789, roll: -12.963123321533203
+[MainThread, 2020-07-30 09:43:23,105, INFO]: **************** Time to preprocess frame (landmarks-regression-retail-0009): 0.00016473299911012873
+[MainThread, 2020-07-30 09:43:23,107, INFO]: **************** Time to infer model (sync) (landmarks-regression-retail-0009): 0.001774791999196168
+[MainThread, 2020-07-30 09:43:23,138, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 0.00017715600188239478
+[MainThread, 2020-07-30 09:43:23,138, INFO]: **************** Time to preprocess frame (gaze-estimation-adas-0002): 9.888199929264374e-05
+[MainThread, 2020-07-30 09:43:23,146, INFO]: **************** Time to infer model (sync) (gaze_estimation): 0.0076746079976146575
+[MainThread, 2020-07-30 09:43:23,146, DEBUG]: Gaze angles: -0.024716800078749657,-0.15308550000190735, -0.9525405168533325
+[MainThread, 2020-07-30 09:43:23,148, INFO]: **************** Time to preprocess frame (face-detection-adas-0001): 0.0011558070000319276
+[MainThread, 2020-07-30 09:43:23,212, INFO]: **************** Time to infer model (async+wait) (face-detection-adas-0001): 0.06381556400083355
+[MainThread, 2020-07-30 09:43:23,246, DEBUG]: Face Cropped
+[mouse-moving-thread, 2020-07-30 09:43:23,724, DEBUG]: moving mouse to -24, 0
+[mouse-moving-thread, 2020-07-30 09:43:24,905, DEBUG]: moving mouse to -24, 0
+[mouse-moving-thread, 2020-07-30 09:43:26,078, DEBUG]: moving mouse to -24, 0
+[mouse-moving-thread, 2020-07-30 09:43:27,257, DEBUG]: moving mouse to -24, 91
+[mouse-moving-thread, 2020-07-30 09:43:28,439, DEBUG]: moving mouse to -24, 0
+[mouse-moving-thread, 2020-07-30 09:43:29,612, DEBUG]: moving mouse to -24, 0
+[mouse-moving-thread, 2020-07-30 09:43:30,789, DEBUG]: moving mouse to -24, 0
+[mouse-moving-thread, 2020-07-30 09:43:31,963, DEBUG]: moving mouse to -24, 0
+[mouse-moving-thread, 2020-07-30 09:43:33,146, DEBUG]: moving mouse to -24, 13
+[mouse-moving-thread, 2020-07-30 09:43:34,329, DEBUG]: moving mouse to -24, 0
+[mouse-moving-thread, 2020-07-30 09:43:35,507, DEBUG]: moving mouse to -24, 40
+[mouse-moving-thread, 2020-07-30 09:43:36,691, DEBUG]: moving mouse to -24, 5
+[mouse-moving-thread, 2020-07-30 09:43:37,873, DEBUG]: moving mouse to -24, 89
