@@ -88,6 +88,8 @@ class MousEyes:
                             help="Precision of the mouse pointer. Possible values: high, medium, low")
         parser.add_argument("-ms", "--mouse_speed", type=str, default=MOUSE_SPEED,
                             help="Speed of the mouse pointer. Possible values: fast, medium, slow")
+        parser.add_argument("-st","--same_thread", required=False, action="store_true",
+                            help="Do not separate the mouse thread from the main thread (seems slower)")
         return parser
 
     def sanitize_input(self, args):
@@ -176,11 +178,12 @@ class MousEyes:
         gaze_model = GazeEstimationModel(args.gaze_model, args.device, args.cpu_extension, logger=log)
         self.mouse = MouseController(args.mouse_precision, args.mouse_speed, logger=log)
 
-        self.continue_thread = True
-        self.mouse_coords = (None, None)
-        t = threading.Thread(target=self.move_mouse)
-        t.name = "mouse-moving-thread"
-        t.start()
+        if not args.same_thread:
+            self.continue_thread = True
+            self.mouse_coords = (None, None)
+            threadMouseMover = threading.Thread(target=self.move_mouse)
+            threadMouseMover.name = "mouse-moving-thread"
+            threadMouseMover.start()
 
         #open video and process the frames
         ifeed = InputFeeder(args.input)
@@ -237,6 +240,7 @@ class MousEyes:
 
             gaze_info = f"Gaze angles: {gaze_x},{gaze_y}, {gaze_z}"
             log.debug(gaze_info)
+            #print(gaze_info)
 
             """
             if not args.hide_window:
@@ -247,12 +251,14 @@ class MousEyes:
                     break #exit the for frame in ifeed loop
             """
 
-            #self.mouse.move(gaze_x, gaze_y)  #if in the same thread, everything waits until the mouse move is finished
-            self.mouse_coords = (gaze_x, gaze_y)        #the separated thread will update the mouse pointer
+            if args.same_thread:
+                self.mouse.move(gaze_x, gaze_y)  #if in the same thread, everything waits until the mouse move is finished
+            else:
+                self.mouse_coords = (gaze_x, gaze_y)        #the separated thread will update the mouse pointer
 
-        self.continue_thread = False
-        t.join()
-
+        if not args.same_thread:
+            self.continue_thread = False
+            threadMouseMover.join()
 
     def get_face_coords(self, model, frame):
         image = model.preprocess_input(frame)
