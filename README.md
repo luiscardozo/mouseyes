@@ -61,6 +61,48 @@ To **stop** the program, press `ESC` or `q`, or hit `Ctrl+C` in the terminal.
 It uses predefined models in the models/ directory. To change the path of the models, or to try with another models (with similar outpus), you can change with the `--face_model`, `--head_pose_model`, `--landmarks_model` and `--gaze_model`.
 You can run in CPU, GPU, VPU (for example, Neural Compute Stick 2 or NCS2. Device option: "MYRIAD") or FPGA, passing one of these options to `--device`.
 
+If you want to move the mouse within the same main thread, use `--same_thread`. Otherwise, a secondary thread will move the mouse, making the video or webcam more fluid, but picking just some of the "move" commands.
+
+### Directory structure
+```
+mouseyes/                           <== root directory
+├── main.py                         <== entry point to execute the program
+├── README.md                       <== The file that you are reading right now
+├── requirements.txt                <== Dependencies listing to install with pip -r requirements.txt
+├── setup.py                        <== To install the package (python3 setup.py install)
+├── models                          <== You can put your pretrained models here
+│   ├── info.txt                    <== Information on how to download pretrained models from Intel Model Zoo
+│   └── nobinmodel                  <== Specific model directory
+│       └── nobinmodel.xml          <== Model with no .bin file (for testing purposes)
+├── src                             <== Source directory
+│   └── mouseyes                    <== mouseyes package
+│       ├── __init__.py             <== this file marks this directory as a Python Package
+│       ├── main.py                 <== Main file. This is where the major logic is performed
+│       ├── model.py                <== ModelBase class. All models inherit from this. It calls the functions of OpenVINO
+│       ├── face_detection.py       <== Face Detection Model class. Inherits from ModelBase
+│       ├── facial_landmarks_detection.py   <== Facial Landmarks Detection Model class. Inherits from ModelBase
+│       ├── head_pose_estimation.py         <== Head Pose Estimation model class. Inherits from ModelBase
+│       ├── gaze_estimation.py              <== Gaze Estimation Model class. Inherits from ModelBase
+│       ├── input_feeder.py                 <== Controls the input (video, webcam, image file)
+│       ├── mouse_controller.py             <== Controls the mouse
+│       └── mouseyes_exceptions.py          <== Custom Exceptions for this project
+├── bin
+│   └── demo.mp4                            <== Original video for demo
+└── tests                                   <== Tests to see if everything is working
+    ├── __init__.py
+    ├── resources                           <== Resources for the tests
+    │   ├── center.jpg
+    │   ├── cropped_face.jpg
+    │   ├── ...
+    │   ├── video.webm
+    │   └── wink_left.jpg
+    ├── test_face_detection.py              <== Test files
+    ├── test_gaze.py
+    ├── test_head_pose.py
+    ├── test_image_feeder.py
+    ├── test_landmarks.py
+    └── test_models.py
+```
 
 ## Benchmarks
 ### Testing with other hardwares
@@ -70,6 +112,8 @@ Trying to run in NCS2 (MYRIAD) gives me `unsupported layer type "Quantize"`
 Trying to run in `HETERO:MYRIAD,CPU` or `HETERO:GPU,CPU`, gives me an error because I need to apply the CPU extension but HETERO cannot accept the extension.
 
 So, for now, I can only test in CPU with extensions, until I get a newer hardware.
+
+### Execution Times
 
 *TODO:* Include the benchmark results of running your model on multiple hardwares and multiple model precisions. Your benchmarks can include: model loading time, input/output processing time, model inference time etc.
 
