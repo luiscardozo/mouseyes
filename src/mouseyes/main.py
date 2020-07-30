@@ -116,7 +116,7 @@ class MousEyes:
             exit(1)
 
         if args.dev:
-            args.hide_window = False
+            #args.hide_window = False
             args.cpu_extension = EXTENSION
             #and others in the future
 
@@ -194,10 +194,16 @@ class MousEyes:
             threadMouseMover.name = "mouse-moving-thread"
             threadMouseMover.start()
 
+        if args.hide_window:
+            print("'Without display' mode.")
+
         #open video and process the frames
         ifeed = InputFeeder(args.input)
         for frame in ifeed:
+            #initialize some variables that may not get changed but used
             painted_frame = None
+            head_angles_info = "(no info)"
+            gaze_info = "(no info)"
 
             #get the face coords
             face_coords = self.get_face_coords(face_model, frame)
@@ -257,6 +263,10 @@ class MousEyes:
                 if key_pressed == 27 or key_pressed == 113: #Esc or q
                     break #exit the for frame in ifeed loop
                 self.check_key_pressed(key_pressed, args)
+            else:
+                print("Move your eyes to move the mouse")
+                print("Head Angles: ", head_angles_info)
+                print("Gaze Angles: ", gaze_info)
             
         #end for frame
 
