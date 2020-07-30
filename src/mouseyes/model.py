@@ -6,6 +6,7 @@ import os
 import sys
 import cv2
 import numpy as np
+import time
 
 from openvino.inference_engine import IECore, IENetwork
 from mouseyes.mouseyes_exceptions import UnsupportedLayersException, ModelXmlFileNotFoundException, ModelBinFileNotFoundException
@@ -20,6 +21,7 @@ class ModelBase:
         '''
         #Get the model structure and weights
         self.model_structure, self.model_weights = self.check_model(model_path)
+        self.model_name = os.path.splitext(os.path.basename(self.model_structure))[0]
         
         self.device = device
         self.extensions = extensions
@@ -39,7 +41,10 @@ class ModelBase:
             self.core.add_extension(self.extensions, self.device)
 
         # read the network structure and create an IENetwork
+
+        startt = time.perf_counter()
         self.network = IENetwork(model=self.model_structure, weights=self.model_weights)
+        self.log(f"**************** Time to create IENetwork ({self.model_name}): {time.perf_counter()-startt}")
         # Or in 2020.2+ =>
         #self.network = self.core.read_network(model=model_structure, weights=model_weights)
 
@@ -52,7 +57,9 @@ class ModelBase:
         self.output_name=next(iter(self.network.outputs))
         
         try:
+            startt = time.perf_counter()
             self.exec_net = self.core.load_network(network=self.network, device_name=self.device) #num_requests=1
+            self.log(f"**************** Time to load the model ({self.model_name}): {time.perf_counter()-startt}")
         except Exception as e:
             if "unsupported layer" in str(e):
                 # OpenVINO throws a RuntimeException on unsupported layer,
@@ -71,11 +78,15 @@ class ModelBase:
         input_blob = {self.input_name: image}
 
         if sync:
+            startt = time.perf_counter()
             out = self.infer_sync(input_blob)
+            self.log(f"**************** Time to infer model (sync) ({self.model_name}): {time.perf_counter()-startt}")
             return out[self.output_name]        #normally returns a dict
         else:
+            startt = time.perf_counter()
             self.infer_async(input_blob, request_id)
             if self.wait(request_id) == 0:
+                self.log(f"**************** Time to infer model (async+wait) ({self.model_name}): {time.perf_counter()-startt}")
                 return self.get_output(request_id)
     
     def infer_sync(self, input_blob):
@@ -106,6 +117,7 @@ class ModelBase:
         """
         Preprocess the frame according to the model needs.
         """
+        startt = time.perf_counter()
         if required_size is None:
             input_name = self.input_name if input_name is None else input_name
             input_shape = self.get_input_shape(input_name)
@@ -115,7 +127,7 @@ class ModelBase:
         #cv2.cvtColor if not BGR
         frame = frame.transpose(self.transpose_form)    #depends on the model. Initialized with the class
         frame = frame.reshape(1, *frame.shape)          #depends on the model
-        
+        self.log(f"**************** Time to preprocess frame ({self.model_name}): {time.perf_counter()-startt}")
         return frame
 
     def preprocess_output(self, outputs, vid_width, vid_height, label=1.0, min_threshold=0.5):
