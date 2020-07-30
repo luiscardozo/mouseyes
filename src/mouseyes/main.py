@@ -82,8 +82,16 @@ class MousEyes:
         parser.add_argument("-dev", "--dev", required=False, action="store_true",
                             help="Set options to ease the development.\n"
                             "Same as using -s")
+        parser.add_argument("--display_face", required=False, action="store_true",
+                            help="Draw a square on the detected face")
         parser.add_argument("--display_landmarks", required=False, action="store_true",
                             help="Display the landmarks in the output video")
+        parser.add_argument("--display_head_position", required=False, action="store_true",
+                            help="Display the detected head position info into the output video")
+        parser.add_argument("--display_gaze_angles", required=False, action="store_true",
+                            help="Display the detected gaze angles into the output video")
+        parser.add_argument("--hide_video_help", required=False, action="store_true",
+                            help="Hide the help text from the video")
         parser.add_argument("-mp", "--mouse_precision", type=str, default=MOUSE_PRECISION,
                             help="Precision of the mouse pointer. Possible values: high, medium, low")
         parser.add_argument("-ms", "--mouse_speed", type=str, default=MOUSE_SPEED,
@@ -112,7 +120,7 @@ class MousEyes:
             args.cpu_extension = EXTENSION
             #and others in the future
 
-    def draw_masks(self, frame, coords):
+    def draw_face_box(self, frame, coords):
         '''
         Draw bounding boxes onto the frame.
         '''
@@ -138,8 +146,9 @@ class MousEyes:
                                 radius=10, color=(255,255,0), thickness=2)
         return frame
 
-    def draw_info(self, frame, info):
-        cv2.putText(frame, info, (100, 100), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255,0,0), thickness=2)
+    def draw_info(self, frame, info, pos=(10,15), color=(255,0,0), thickness=1, scale=0.5):
+        cv2.putText(frame, info, pos, cv2.FONT_HERSHEY_SIMPLEX, scale, color, thickness=thickness)
+        return frame
     
     def move_mouse(self):
         """
@@ -188,77 +197,90 @@ class MousEyes:
         #open video and process the frames
         ifeed = InputFeeder(args.input)
         for frame in ifeed:
+            painted_frame = None
+
             #get the face coords
             face_coords = self.get_face_coords(face_model, frame)
+
+            if face_coords is not None:
+                if args.display_face:
+                    painted_frame = self.draw_face_box(frame, face_coords)
+                else:
+                    painted_frame = frame
+                
+                #get the cropped face for the next models
+                cropped_face = face_model.get_cropped_face(frame, face_coords)
+
+                #get head angles
+                head_angles = self.get_head_angles(head_pose_model, cropped_face)
+                yaw, pitch, roll = head_angles
+                head_angles_info = f"Head angles: yaw: {yaw:.3f}, pitch: {pitch:.3f}, roll: {roll:.3f}"
+                log.debug(head_angles_info)
+                
+                if args.display_head_position:
+                    painted_frame = self.draw_info(painted_frame, head_angles_info, (10,35))
             
+                # get cropped eyes:
+                eyes, landmarks = self.get_cropped_eyes(landmark_model, cropped_face)
+                if eyes.shape[0] > 1:   #only continue if there are 2 eyes
+                    right_eye = eyes[0]
+                    left_eye = eyes[1]
+
+                    if args.display_landmarks:
+                        painted_frame = self.draw_landmarks(cropped_face, landmarks, painted_frame, face_coords)
+                    
+                    # get the gaze estimation
+                    gaze_estimation = self.get_gaze_estimation(gaze_model, right_eye, left_eye, head_angles)
+                    gaze_x, gaze_y, gaze_z = gaze_estimation
+
+                    gaze_info = f"Gaze angles: {gaze_x:.3f},{gaze_y:.3f}, {gaze_z:.3f}"
+                    log.debug(gaze_info)
+                    if args.display_gaze_angles:
+                        painted_frame = self.draw_info(painted_frame, gaze_info, (10,55), (0,255,0))
+
+                    #AAAANNND FINALLY move the mouse
+                    if args.same_thread:
+                        self.mouse.move(gaze_x, gaze_y)  #if in the same thread, everything waits until the mouse move is finished
+                    else:
+                        self.mouse_coords = (gaze_x, gaze_y)        #the separated thread will update the mouse pointer
+
+            # draw the image from video even if no face was detected
             if not args.hide_window:
-                painted_frame = self.draw_masks(frame, face_coords)
+                if painted_frame is None:
+                    painted_frame = frame
+                
+                if not args.hide_video_help:
+                    painted_frame = self.draw_info(painted_frame, "Keys: q or Esc to exit. Others: h f l p g", (10, 100))
                 cv2.imshow(MAIN_DISPLAY, painted_frame)
                 #wait for a key
-                #if face_coords is None:     #only waitkey (shows the window) if no face coords. Else, overwrite before displaying
                 key_pressed = cv2.waitKey(30)
                 if key_pressed == 27 or key_pressed == 113: #Esc or q
                     break #exit the for frame in ifeed loop
-
-            if face_coords is None:
-                continue
-
-            #crop the face
-            cropped_face = face_model.get_cropped_face(frame, face_coords)
-
-            #get head angles
-            head_angles = self.get_head_angles(head_pose_model, cropped_face)
-            yaw, pitch, roll = head_angles
-            log.debug(f"Head angles: yaw: {yaw}, pitch: {pitch}, roll: {roll}")
+                self.check_key_pressed(key_pressed, args)
             
-            # get cropped eyes:
-            eyes, landmarks = self.get_cropped_eyes(landmark_model, cropped_face)
-            if eyes.shape[0] < 2:
-                continue
+        #end for frame
 
-            right_eye = eyes[0]
-            left_eye = eyes[1]
-
-            if not args.hide_window:
-                if args.display_landmarks:
-                    #frame_landmarks = self.draw_landmarks(cropped_face, landmarks)
-                    #cv2.imshow('landmarks', frame_landmarks)
-                    frame_landmarks = self.draw_landmarks(cropped_face, landmarks, frame, face_coords)
-                    cv2.imshow(MAIN_DISPLAY, frame_landmarks)
-                #cv2.imshow('right', right_eye)
-                #cv2.imshow('left', left_eye)
-                #wait for a key
-                key_pressed = cv2.waitKey(30)
-                if key_pressed == 108: #'l' de Landmark
-                    args.display_landmarks = not args.display_landmarks
-                if key_pressed == 27 or key_pressed == 113: #Esc or q
-                    break #exit the for frame in ifeed loop
-
-            # get the gaze estimation
-            gaze_estimation = self.get_gaze_estimation(gaze_model, right_eye, left_eye, head_angles)
-            gaze_x, gaze_y, gaze_z = gaze_estimation
-
-            gaze_info = f"Gaze angles: {gaze_x},{gaze_y}, {gaze_z}"
-            log.debug(gaze_info)
-            #print(gaze_info)
-
-            """
-            if not args.hide_window:
-                frame_with_info = self.draw_info(painted_frame, gaze_info)
-                cv2.imshow(MAIN_DISPLAY, frame_with_info)
-                key_pressed = cv2.waitKey(30)
-                if key_pressed == 27 or key_pressed == 113: #Esc or q
-                    break #exit the for frame in ifeed loop
-            """
-
-            if args.same_thread:
-                self.mouse.move(gaze_x, gaze_y)  #if in the same thread, everything waits until the mouse move is finished
-            else:
-                self.mouse_coords = (gaze_x, gaze_y)        #the separated thread will update the mouse pointer
-
+        # Loop finished. Join the other thread.
         if not args.same_thread:
             self.continue_thread = False
             threadMouseMover.join()
+
+        ifeed.close()   #if terminated before the stream ended (for example, with Esc or q)
+
+    #end def main()
+
+    def check_key_pressed(self, key_pressed, args):
+        if key_pressed == ord('f'): #'f' of Face
+            args.display_face = not args.display_face
+        elif key_pressed == ord('l'): #'l' of Landmark
+            args.display_landmarks = not args.display_landmarks
+        elif key_pressed == ord('p'): #'h' of head Position
+            args.display_head_position = not args.display_head_position
+        elif key_pressed == ord('g'): #'g' of Gaze
+            args.display_gaze_angles = not args.display_gaze_angles
+        elif key_pressed == ord('h'): #'h' of Help
+            args.hide_video_help = not args.hide_video_help
+        # I miss the switch/case of other languages...
 
     def get_face_coords(self, model, frame):
         image = model.preprocess_input(frame)
