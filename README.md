@@ -113,7 +113,7 @@ Trying to run in `HETERO:MYRIAD,CPU` or `HETERO:GPU,CPU`, gives me an error beca
 
 So, for now, I can only test in CPU with extensions, until I get a newer hardware.
 
-### Execution Times
+### Execution Times Results
 
 Running with different model precisions and measuring time:
 
@@ -121,49 +121,90 @@ Running with different model precisions and measuring time:
 * Description: "Default" precisions: Face Detection in INT1 (face-detection-adas-binary-0001), other models in FP32
 * Command: `python3 main.py --dev --logfile tests/results/mouseyes.default.log`
 * Log: `tests/results/mouseyes.default.log`
+* Method to calculate the values:
+
 
 **load time:**
-* face: 0.186
-* head: 0.051
-* landmarks: 0.034
-* gaze: 0.508
+* face: 0.1864
+* head: 0.0512
+* landmarks: 0.0342
+* gaze: 0.5088
 
 **infer time:**
-* face infer (async): aronund  ~0.04 (first times are higher)
-* head pose (sync): around ~0.003
-* landmarks (sync): around ~0.0009 (sometimes around ~0.00188)
-* gaze (sync): around: ~0.004
+* face infer (async): ~0.0306
+* head pose (sync): ~0.0036
+* landmarks (sync): ~0.0011
+* gaze (sync): around: ~0.0046
 
-```
 
 #### Test 2:
 * Description: All the models in FP32 (Face Detection: face-detection-adas-0001)
-* Command: `python3 main.py --dev --face_model models/intel/face-detection-adas-0001/FP32/face-detection-adas-0001.xml`
+* Command: `python3 main.py --dev --face_model models/intel/face-detection-adas-0001/FP32/face-detection-adas-0001.xml --logfile tests/results/mouseyes.fp32_all.log`
 * Log: `tests/results/mouseyes.fp32_all.log`
 
+**load time:**
+* face: 0.1985
+* head: 0.0519
+* landmarks: 0.0405
+* gaze: 0.0701
+
+**infer time:**
+* face infer (async): ~0.0644
+* head pose (sync): ~0.0047
+* landmarks (sync): ~0.0015
+* gaze (sync): around: ~0.0075
+
+
 #### Test 3:
-* Description: All models in FP16
-* Command: `python3 main.py --dev --face_model models/intel/face-detection-adas-0001/FP16/face-detection-adas-0001.xml --head_pose_model models/intel/head-pose-estimation-adas-0001/FP16/head-pose-estimation-adas-0001.xml --landmarks_model models/intel/landmarks-regression-retail-0009/FP16/landmarks-regression-retail-0009.xml --gaze_model models/intel/gaze-estimation-adas-0002/FP16/gaze-estimation-adas-0002.xml`
+* Description: All models in FP16 (Face Detection: face-detection-adas-0001)
+* Command: `python3 main.py --dev --face_model models/intel/face-detection-adas-0001/FP16/face-detection-adas-0001.xml --head_pose_model models/intel/head-pose-estimation-adas-0001/FP16/head-pose-estimation-adas-0001.xml --landmarks_model models/intel/landmarks-regression-retail-0009/FP16/landmarks-regression-retail-0009.xml --gaze_model models/intel/gaze-estimation-adas-0002/FP16/gaze-estimation-adas-0002.xml --logfile tests/results/mouseyes.fp16.log`
 * Log: `tests/results/mouseyes.fp16.log`
 
+**load time:**
+* face: 0.2110
+* head: 0.0755
+* landmarks: 0.0415
+* gaze: 0.0838
+
+**infer time:**
+* face infer (async): ~0.0647
+* head pose (sync): ~0.0046
+* landmarks (sync): ~0.0015
+* gaze (sync): around: ~0.0075
+
 #### Test 4:
-* Description: Face and Gaze in INT8. Others in FP32.
-* Command: `python3 main.py --dev --face_model models/intel/face-detection-adas-0001/INT8/face-detection-adas-0001.xml --gaze_model models/intel/gaze-estimation-adas-0002/INT8/gaze-estimation-adas-0002.xml
+* Description: Face and Gaze in INT8. Others in FP32. (Face Detection: face-detection-adas-0001)
+* Command: `python3 main.py --dev --face_model models/intel/face-detection-adas-0001/INT8/face-detection-adas-0001.xml --gaze_model models/intel/gaze-estimation-adas-0002/INT8/gaze-estimation-adas-0002.xml --logfile tests/results/mouseyes.int8.log`
 * Log: `tests/results/mouseyes.int8.log`
 
+**load time:**
+* face: 0.1439
+* head: 0.0542
+* landmarks: 0.0395
+* gaze: 0.0801
 
-*TODO:* Include the benchmark results of running your model on multiple hardwares and multiple model precisions. Your benchmarks can include: model loading time, input/output processing time, model inference time etc.
+**infer time:**
+* face infer (async): ~0.0503
+* head pose (sync): ~0.0048
+* landmarks (sync): ~0.0015
+* gaze (sync): around: ~0.0052
 
-## Results
-*TODO:* Discuss the benchmark results and explain why you are getting the results you are getting. For instance, explain why there is difference in inference time for FP32, FP16 and INT8 models.
 
-## Stand Out Suggestions
-This is where you can provide information about the stand out suggestions that you have attempted.
+To calculate the mean values from the log files, I created a avg.py that receives all the values and calculate the mean.
+For example, to extract "face detection infer time" on mouseyes.fp32_all.log and calculate the mean:
+```
+$ cd tests/results
+$ grep "Time to infer model (async+wait) (face-detection-adas-0001" mouseyes.fp32_all.log | cut -d: -f5 | python3 avg.py
+Items:  (135,)
+Mean:  0.06441624244438976
+Max:  0.07500506799988216
+Min:  0.06196728700160747
+```
 
 ### Async Inference
-If you have used Async Inference in your code, benchmark the results and explain its effects on power and performance of your project.
+Using sync vs async, I've got almost the same time. That is because (I think), to fully leverage the power of async inference, I need to continue with the next inferences instead of waiting for the result of the inference that I recently sent to the OpenVINO engine. This should be faster, but more complicated architecture. In the case of this program, I think that the times are pretty fast and I don't need to complicate it to get better performance (just jet).
 
 ### Edge Cases
 Some situations can break the flow. For example, if you turn your head so that there is only one eye visible, the pointer will stop moving (this is on purpose, to avoid some internal invalid maths).
 
-There will be certain situations that will break your inference flow. For instance, lighting changes or multiple people in the frame. Explain some of the edge cases you encountered in your project and how you solved them to make your project more robust.
+If the lighting is not good, but the algorithm detect something, the mouse can go anywhere. So, expect erratic behaviour if your face and eyes are not fully visible.
