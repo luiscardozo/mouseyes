@@ -15,7 +15,7 @@ class MouseController:
         precision_dict={'high':100, 'low':1000, 'medium':500}
         speed_dict={'fast':1, 'slow':10, 'medium':5}
         self.screenWidth, self.screenHeight = pyautogui.size()
-        print(f"wxh: {self.screenWidth}x{self.screenHeight}")
+        #print(f"wxh: {self.screenWidth}x{self.screenHeight}")
 
         self.precision=precision_dict[precision]
         self.speed=speed_dict[speed]
@@ -24,12 +24,12 @@ class MouseController:
     def safe_rel_move(self, relMove, curPos, limit):
         relMove = int(relMove*self.precision)
         moveToDir = curPos + relMove
-        print(f"relMove: {relMove},  moveToDir: {moveToDir}, curPos: {curPos}, limit: {limit}")
+        #print(f"relMove: {relMove},  moveToDir: {moveToDir}, curPos: {curPos}, limit: {limit}")
         if moveToDir < 0:
             relMove = -curPos +3
         elif moveToDir >= limit:
             relMove = limit - curPos -3
-        print(f"NewRelMove: {relMove}, moveTo: {relMove+curPos}")
+        #print(f"NewRelMove: {relMove}, moveTo: {relMove+curPos}")
         return relMove
 
     def move(self, x, y):
@@ -38,7 +38,7 @@ class MouseController:
         moveX = self.safe_rel_move(x, curPosX, self.screenWidth)
         moveY = self.safe_rel_move(-1*y, curPosY, self.screenHeight)
 
-        print("moving mouse to {}, {} (curPos:{}x{}. Sum:{}x{})".format(moveX, moveY, curPosX, curPosY, curPosX+moveX, curPosY+moveY))
+        #print("moving mouse to {}, {} (curPos:{}x{}. Sum:{}x{})".format(moveX, moveY, curPosX, curPosY, curPosX+moveX, curPosY+moveY))
 
         self.logger.debug("moving mouse to {}, {}".format(moveX, moveY))
         pyautogui.moveRel(moveX, moveY, duration=self.speed)
