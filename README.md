@@ -115,6 +115,43 @@ So, for now, I can only test in CPU with extensions, until I get a newer hardwar
 
 ### Execution Times
 
+Running with different model precisions and measuring time:
+
+#### Test 1:
+* Description: "Default" precisions: Face Detection in INT1 (face-detection-adas-binary-0001), other models in FP32
+* Command: `python3 main.py --dev --logfile tests/results/mouseyes.default.log`
+* Log: `tests/results/mouseyes.default.log`
+
+**load time:**
+* face: 0.186
+* head: 0.051
+* landmarks: 0.034
+* gaze: 0.508
+
+**infer time:**
+* face infer (async): aronund  ~0.04 (first times are higher)
+* head pose (sync): around ~0.003
+* landmarks (sync): around ~0.0009 (sometimes around ~0.00188)
+* gaze (sync): around: ~0.004
+
+```
+
+#### Test 2:
+* Description: All the models in FP32 (Face Detection: face-detection-adas-0001)
+* Command: `python3 main.py --dev --face_model models/intel/face-detection-adas-0001/FP32/face-detection-adas-0001.xml`
+* Log: `tests/results/mouseyes.fp32_all.log`
+
+#### Test 3:
+* Description: All models in FP16
+* Command: `python3 main.py --dev --face_model models/intel/face-detection-adas-0001/FP16/face-detection-adas-0001.xml --head_pose_model models/intel/head-pose-estimation-adas-0001/FP16/head-pose-estimation-adas-0001.xml --landmarks_model models/intel/landmarks-regression-retail-0009/FP16/landmarks-regression-retail-0009.xml --gaze_model models/intel/gaze-estimation-adas-0002/FP16/gaze-estimation-adas-0002.xml`
+* Log: `tests/results/mouseyes.fp16.log`
+
+#### Test 4:
+* Description: Face and Gaze in INT8. Others in FP32.
+* Command: `python3 main.py --dev --face_model models/intel/face-detection-adas-0001/INT8/face-detection-adas-0001.xml --gaze_model models/intel/gaze-estimation-adas-0002/INT8/gaze-estimation-adas-0002.xml
+* Log: `tests/results/mouseyes.int8.log`
+
+
 *TODO:* Include the benchmark results of running your model on multiple hardwares and multiple model precisions. Your benchmarks can include: model loading time, input/output processing time, model inference time etc.
 
 ## Results

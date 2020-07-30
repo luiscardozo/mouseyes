@@ -1,0 +1,25 @@
+Running with different model precisions and measuring time:
+
+Test 1:
+=======
+* Description: "Default" precisions: Face Detection in INT1 (face-detection-adas-binary-0001), other models in FP32
+* Command: `python3 main.py --dev`
+* Log: `tests/results/mouseyes.fp32.log`
+
+Test 2:
+=======
+* Description: All the models in FP32 (Face Detection: face-detection-adas-0001)
+* Command: `python3 main.py --dev --face_model models/intel/face-detection-adas-0001/FP32/face-detection-adas-0001.xml`
+* Log: `tests/results/mouseyes.fp32_all.log`
+
+Test 3:
+=======
+* Description: All models in FP16
+* Command: `python3 main.py --dev --face_model models/intel/face-detection-adas-0001/FP16/face-detection-adas-0001.xml --head_pose_model models/intel/head-pose-estimation-adas-0001/FP16/head-pose-estimation-adas-0001.xml --landmarks_model models/intel/landmarks-regression-retail-0009/FP16/landmarks-regression-retail-0009.xml --gaze_model models/intel/gaze-estimation-adas-0002/FP16/gaze-estimation-adas-0002.xml`
+* Log: `tests/results/mouseyes.fp16.log`
+
+Test 4:
+=======
+* Description: Face and Gaze in INT8. Others in FP32.
+* Command: `python3 main.py --dev --face_model models/intel/face-detection-adas-0001/INT8/face-detection-adas-0001.xml --gaze_model models/intel/gaze-estimation-adas-0002/INT8/gaze-estimation-adas-0002.xml
+* Log: `tests/results/mouseyes.int8.log`
