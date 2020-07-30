@@ -4,6 +4,7 @@ import logging as log
 import sys
 import os
 import threading
+import numpy as np
 
 from mouseyes.face_detection import FaceDetectionModel
 from mouseyes.head_pose_estimation import HeadPoseEstimationModel
@@ -98,6 +99,12 @@ class MousEyes:
                             help="Speed of the mouse pointer. Possible values: fast, medium, slow")
         parser.add_argument("-st","--same_thread", required=False, action="store_true",
                             help="Do not separate the mouse thread from the main thread (seems slower)")
+        parser.add_argument("--compensate_yaw", type=float, default=0.0,
+                            help="Compensate yaw angle (default: 0.0)")
+        parser.add_argument("--compensate_pitch", type=float, default=15.0,
+                            help="Compensate pitch angle (default: 15.0)")
+        parser.add_argument("--compensate_roll", type=float, default=0.0,
+                            help="Compensate yaw angle (default: 0.0)")
         return parser
 
     def sanitize_input(self, args):
@@ -146,8 +153,11 @@ class MousEyes:
                                 radius=10, color=(255,255,0), thickness=2)
         return frame
 
-    def draw_info(self, frame, info, pos=(10,15), color=(255,0,0), thickness=1, scale=0.5):
+    def draw_info(self, frame, info, pos=(10,15), color=(0,255,0), thickness=1, scale=0.5, withBackground=False):
+        if withBackground:
+            cv2.putText(frame, info, pos, cv2.FONT_HERSHEY_SIMPLEX, scale, (0,0,0), thickness=thickness*2)
         cv2.putText(frame, info, pos, cv2.FONT_HERSHEY_SIMPLEX, scale, color, thickness=thickness)
+
         return frame
     
     def move_mouse(self):
@@ -218,8 +228,11 @@ class MousEyes:
                 cropped_face = face_model.get_cropped_face(frame, face_coords)
 
                 #get head angles
-                head_angles = self.get_head_angles(head_pose_model, cropped_face)
+                head_angles = self.get_head_angles(head_pose_model, cropped_face, args)
                 yaw, pitch, roll = head_angles
+                yaw += args.compensate_yaw      #compensate yaw angle (if needed)
+                head_angles = yaw, pitch, roll
+
                 head_angles_info = f"Head angles: yaw: {yaw:.3f}, pitch: {pitch:.3f}, roll: {roll:.3f}"
                 log.debug(head_angles_info)
                 
@@ -242,7 +255,7 @@ class MousEyes:
                     gaze_info = f"Gaze angles: {gaze_x:.3f},{gaze_y:.3f}, {gaze_z:.3f}"
                     log.debug(gaze_info)
                     if args.display_gaze_angles:
-                        painted_frame = self.draw_info(painted_frame, gaze_info, (10,55), (0,255,0))
+                        painted_frame = self.draw_info(painted_frame, gaze_info, (10,55))
 
                     #AAAANNND FINALLY move the mouse
                     if args.same_thread:
@@ -256,7 +269,11 @@ class MousEyes:
                     painted_frame = frame
                 
                 if not args.hide_video_help:
-                    painted_frame = self.draw_info(painted_frame, "Keys: q or Esc to exit. Others: h f l p g", (10, 100))
+                    painted_frame = self.draw_info(painted_frame,
+                                        "Keys: f l p g h. To exit, press q or Esc",
+                                        (10, painted_frame.shape[0]-20),
+                                        withBackground=True)
+                
                 cv2.imshow(MAIN_DISPLAY, painted_frame)
                 #wait for a key
                 key_pressed = cv2.waitKey(30)
@@ -299,18 +316,23 @@ class MousEyes:
         h = frame.shape[0]
         return model.preprocess_output(landmarks, w, h)
 
-    def get_head_angles(self, model, image, sync=True):
+    def get_head_angles(self, model, image, args, sync=True):
         """
         Get the head angles (pitch, roll, yaw) from the current *image*, using the *model*.
         If sync is True, run the prediction in sync mode, else async.
         """
         img = model.preprocess_input(image)
         out = model.predict(img, sync)
+        #yaw = out['angle_y_fc'][0][0]   # yaw  = head to left / right (as in "No")
         #pitch = out['angle_p_fc'][0][0] # pitch = up / down (as in "Yes")
         #roll = out['angle_r_fc'][0][0]  # roll = diagonal head movement (as in "What?")
-        #yaw = out['angle_y_fc'][0][0]   # yaw  = head to left / right (as in "No")
-        #return pitch, roll, yaw         # Tait-Bryan angles (yaw, pitch or roll)
-        return model.preprocess_output(out)
+        #return yaw, pitch, roll          # Tait-Bryan angles (yaw, pitch or roll)
+        yaw, pitch, roll = model.preprocess_output(out)
+        #compensate angles from command line options
+        yaw += args.compensate_yaw
+        pitch += args.compensate_pitch
+        roll += args.compensate_roll
+        return np.array([yaw, pitch, roll])
 
     def get_cropped_eyes(self, model, image, sync=True):
         """
