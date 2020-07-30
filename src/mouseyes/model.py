@@ -187,14 +187,15 @@ class ModelBase:
         return False
 
     def log(self, msg, is_error=False, debug=False):
-        if self.logger is not None:
-            if is_error:
-                self.logger.error(msg)
-                print(msg, file=sys.stderr)
-            elif debug:
-                self.logger.debug(msg)
-            else:
-                self.logger.info(msg)
+        if hasattr(self, 'logger'):
+            if self.logger is not None:
+                if is_error:
+                    self.logger.error(msg)
+                    print(msg, file=sys.stderr)
+                elif debug:
+                    self.logger.debug(msg)
+                else:
+                    self.logger.info(msg)
         else:
             if is_error:
                 print(msg, file=sys.stderr)
